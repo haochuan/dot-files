@@ -24,6 +24,7 @@ Plugin 'mattn/emmet-vim'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'heavenshell/vim-jsdoc'
+Plugin 'mxw/vim-jsx'
 
 
 " All of your Plugins must be added before the following line
@@ -39,6 +40,7 @@ set number
 set showcmd "show command in bottom bar
 set cursorline "show current line
 set showmatch "highlight matching (){}{}
+set lazyredraw          " redraw only when we need to."
 
 set incsearch           " search as characters are entered
 set hlsearch            " highlight matches
@@ -52,6 +54,7 @@ inoremap jk <esc>
 " Tab
 set tabstop=2
 set softtabstop=2
+set shiftwidth=2
 set expandtab "tag are spaces"
 
 " Key Mapping
@@ -63,3 +66,13 @@ autocmd FileType javascript set formatprg=prettier\ --stdin\ --single-quote
 autocmd BufWritePre *.js :normal gggqG
 " Run js file
 autocmd FileType javascript nnoremap <buffer> <F4> :exec '!clear; node' shellescape(@%, 1)<cr>
+
+" Plugins
+" vim-jsx
+let g:jsx_ext_required = 0 " Allow JSX in normal JS files"
+
+" jsDoc
+let g:jsdoc_allow_input_prompt=1
+let g:jsdoc_input_description=1
+let g:jsdoc_additional_descriptions=1
+let g:jsdoc_enable_es6=1
