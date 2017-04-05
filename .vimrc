@@ -25,7 +25,8 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'heavenshell/vim-jsdoc'
 Plugin 'mxw/vim-jsx'
-
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'mustache/vim-mustache-handlebars'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -41,6 +42,12 @@ set showcmd "show command in bottom bar
 set cursorline "show current line
 set showmatch "highlight matching (){}{}
 set lazyredraw          " redraw only when we need to."
+" Configure backspace so it acts as it should act
+set backspace=eol,start,indent
+set whichwrap+=<,>,h,l
+
+" Ignore case when searching
+set ignorecase
 
 set incsearch           " search as characters are entered
 set hlsearch            " highlight matches
@@ -60,6 +67,8 @@ set expandtab "tag are spaces"
 " Key Mapping
 " Nerdtree
 map <C-e> :NERDTreeToggle<CR>
+let g:nerdtree_tabs_autofind=1 "automatically find and select currently opened file in NERDTree
+
 
 " Prettier
 autocmd FileType javascript set formatprg=prettier\ --stdin\ --single-quote
