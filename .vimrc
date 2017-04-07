@@ -28,6 +28,7 @@ Plugin 'mxw/vim-jsx'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'mustache/vim-mustache-handlebars'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
+Plugin 'sbdchd/neoformat'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -70,11 +71,22 @@ set expandtab "tag are spaces"
 map <C-e> :NERDTreeToggle<CR>
 let g:nerdtree_tabs_autofind=1 "automatically find and select currently opened file in NERDTree
 
+"Neo format
+autocmd BufWritePre *.js Neoformat
+let g:neoformat_javascript_prettier = {
+      \ 'exe': 'prettier',
+        \ 'args': ['--stdin', '--single-quote'],
+        \ 'stdin': 1}
 
+" Javascript
+" jsdoc syntax
+let g:javascript_plugin_jsdoc = 1
 " Prettier
-autocmd FileType javascript set formatprg=prettier\ --stdin\ --single-quote
-" restore cursor position after format
-autocmd BufWritePre *.js exe "normal! gggqG\<C-o>\<C-o>" 
+" autocmd FileType javascript.jsx,javascript setlocal formatprg=prettier\ --stdin\ --single-quote
+" format on save
+" autocmd BufWritePre *.js :normal gggqG
+" restore cursor position
+" autocmd BufWritePre *.js exe "normal! gggqG\<C-o>\<C-o>"
 " Run js file
 autocmd FileType javascript nnoremap <buffer> <F4> :exec '!clear; node' shellescape(@%, 1)<cr>
 
