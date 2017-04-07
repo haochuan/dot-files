@@ -29,6 +29,7 @@ Plugin 'terryma/vim-multiple-cursors'
 Plugin 'mustache/vim-mustache-handlebars'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'sbdchd/neoformat'
+Plugin 'jistr/vim-nerdtree-tabs'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -68,8 +69,11 @@ set expandtab "tag are spaces"
 
 " Key Mapping
 " Nerdtree
-map <C-e> :NERDTreeToggle<CR>
-let g:nerdtree_tabs_autofind=1 "automatically find and select currently opened file in NERDTree
+map <C-e> :NERDTreeTabsToggle<CR>
+" Nerdtree Tab
+let g:nerdtree_tabs_open_on_console_startup=1
+let g:nerdtree_tabs_focus_on_files=1
+let g:nerdtree_tabs_autofind=1
 
 "Neo format
 autocmd BufWritePre *.js Neoformat
