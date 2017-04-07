@@ -27,6 +27,7 @@ Plugin 'heavenshell/vim-jsdoc'
 Plugin 'mxw/vim-jsx'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'mustache/vim-mustache-handlebars'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -72,7 +73,8 @@ let g:nerdtree_tabs_autofind=1 "automatically find and select currently opened f
 
 " Prettier
 autocmd FileType javascript set formatprg=prettier\ --stdin\ --single-quote
-autocmd BufWritePre *.js :normal gggqG
+" restore cursor position after format
+autocmd BufWritePre *.js exe "normal! gggqG\<C-o>\<C-o>" 
 " Run js file
 autocmd FileType javascript nnoremap <buffer> <F4> :exec '!clear; node' shellescape(@%, 1)<cr>
 
