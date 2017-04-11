@@ -97,7 +97,12 @@ autocmd FileType javascript nnoremap <buffer> <F4> :exec '!clear; node' shellesc
 " Plugins
 " vim-jsx
 let g:jsx_ext_required = 0 " Allow JSX in normal JS files"
-
+" emmet
+let g:user_emmet_settings = {
+\  'javascript.jsx' : {
+\      'extends' : 'jsx',
+\  },
+\}
 " jsDoc
 let g:jsdoc_allow_input_prompt=1
 let g:jsdoc_input_description=1
