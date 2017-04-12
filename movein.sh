@@ -7,7 +7,15 @@ cp ~/.vimrc ./
 echo "Done"
 
 
-echo "Staring moving dot-files from local to remote"
-echo "Moving .gitignore_global..."
+echo "staring moving dot-files from local to remote"
+echo "moving .gitignore_global..."
 cp ~/.gitignore_global ./
-echo "Done"
+echo "done"
+
+
+echo "staring moving dot-files from local to remote"
+echo "moving OceaNext vim theme..."
+cp ~/.vim/colors/OceanicNext.vim ./
+echo "done"
+
+ 
