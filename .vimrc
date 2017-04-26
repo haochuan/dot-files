@@ -94,7 +94,8 @@ let g:javascript_plugin_jsdoc = 1
 " autocmd BufWritePre *.js exe "normal! gggqG\<C-o>\<C-o>"
 " Run js file
 autocmd FileType javascript nnoremap <buffer> <F4> :exec '!clear; node' shellescape(@%, 1)<cr>
-autocmd FileType scala nnoremap <buffer> <F5> :exec '!clear; scala' shellescape(@%, 1)<cr>
+autocmd FileType scala nnoremap <buffer> <F4> :exec '!clear; scala' shellescape(@%, 1)<cr>
+autocmd FileType python nnoremap <buffer> <F4> :exec '!clear; python' shellescape(@%, 1)<cr>
 
 " Plugins
 " vim-jsx
