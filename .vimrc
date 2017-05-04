@@ -77,6 +77,12 @@ let g:nerdtree_tabs_open_on_console_startup=1
 let g:nerdtree_tabs_focus_on_files=1
 let g:nerdtree_tabs_autofind=1
 
+" ctrlp
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
+set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
+
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
+
 "Neo format
 autocmd BufWritePre *.js Neoformat
 let g:neoformat_javascript_prettier = {
