@@ -84,12 +84,21 @@ set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
 
 "Neo format
-autocmd BufWritePre *.js Neoformat
+"autocmd BufWritePre *.js Neoformat
+augroup fmt
+  autocmd!
+  autocmd BufWritePre * Neoformat
+augroup END
 let g:neoformat_javascript_prettier = {
       \ 'exe': 'prettier',
         \ 'args': ['--stdin', '--single-quote'],
         \ 'stdin': 1}
 
+let g:neoformat_enabled_javascript = ['prettier']
+let g:neoformat_enabled_css = ['cssbeautify']
+let g:neoformat_enabled_json = ['jsbeautify']
+
+let g:neoformat_enabled_html = ['htmlbeautify']
 " Javascript
 " jsdoc syntax
 let g:javascript_plugin_jsdoc = 1
