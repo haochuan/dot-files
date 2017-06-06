@@ -73,7 +73,7 @@ set expandtab "tag are spaces"
 " Nerdtree
 map <C-e> :NERDTreeTabsToggle<CR>
 " Nerdtree Tab
-let g:nerdtree_tabs_open_on_console_startup=1
+" let g:nerdtree_tabs_open_on_console_startup=1
 let g:nerdtree_tabs_focus_on_files=1
 let g:nerdtree_tabs_autofind=1
 
@@ -95,7 +95,7 @@ let g:neoformat_javascript_prettier = {
         \ 'stdin': 1}
 
 let g:neoformat_enabled_javascript = ['prettier']
-let g:neoformat_enabled_css = ['cssbeautify']
+let g:neoformat_enabled_css = ['prettier']
 let g:neoformat_enabled_json = ['jsbeautify']
 
 let g:neoformat_enabled_html = ['htmlbeautify']
