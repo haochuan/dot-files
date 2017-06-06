@@ -87,7 +87,9 @@ let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
 "autocmd BufWritePre *.js Neoformat
 augroup fmt
   autocmd!
-  autocmd BufWritePre * Neoformat
+  autocmd BufWritePre *.js Neoformat
+  autocmd BufWritePre *.css Neoformat
+  autocmd BufWritePre *.json Neoformat
 augroup END
 let g:neoformat_javascript_prettier = {
       \ 'exe': 'prettier',
@@ -98,7 +100,7 @@ let g:neoformat_enabled_javascript = ['prettier']
 let g:neoformat_enabled_css = ['prettier']
 let g:neoformat_enabled_json = ['jsbeautify']
 
-let g:neoformat_enabled_html = ['htmlbeautify']
+" let g:neoformat_enabled_html = ['htmlbeautify']
 " Javascript
 " jsdoc syntax
 let g:javascript_plugin_jsdoc = 1
