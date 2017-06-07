@@ -111,9 +111,21 @@ let g:javascript_plugin_jsdoc = 1
 " restore cursor position
 " autocmd BufWritePre *.js exe "normal! gggqG\<C-o>\<C-o>"
 " Run js file
-autocmd FileType javascript nnoremap <buffer> <F4> :exec '!clear; node' shellescape(@%, 1)<cr>
-autocmd FileType scala nnoremap <buffer> <F4> :exec '!clear; scala' shellescape(@%, 1)<cr>
-autocmd FileType python nnoremap <buffer> <F4> :exec '!clear; python' shellescape(@%, 1)<cr>
+
+autocmd filetype python nnoremap <F4> :w <bar> exec '!python '.shellescape('%')<CR>
+autocmd filetype javascript nnoremap <F4> :w <bar> exec '!node '.shellescape('%')<CR>
+autocmd filetype python nnoremap <F4> :w <bar> exec '!python '.shellescape('%')<CR>
+autocmd filetype c nnoremap <F4> :w <bar> exec '!gcc '.shellescape('%').' -o '.shellescape('%:r').' && ./'.shellescape('%:r')<CR>
+autocmd filetype cpp nnoremap <F4> :w <bar> exec '!g++ '.shellescape('%').' -o '.shellescape('%:r').' && ./'.shellescape('%:r')<CR>
+
+" auto load vimrc when there is a change
+augroup myvimrchooks
+    au!
+    autocmd bufwritepost .vimrc source ~/.vimrc
+augroup END
+
+"Youcompleteme fix
+let g:ycm_global_ycm_extra_conf ='~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
 
 " Plugins
 " vim-jsx
