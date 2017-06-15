@@ -16,6 +16,12 @@ echo "moving .zshrc..."
 cp ./.zshrc ~/.
 echo "done"
 
+
+echo "staring moving dot-files from remote to local"
+echo "moving .jshintrc..."
+cp ./.jshintrc ~/.
+echo "done"
+
 echo "staring moving dot-files from local to remote"
 echo "moving OceaNext vim theme..."
 cp ./OceanicNext.vim ~/.vim/colors/.
