@@ -51,6 +51,9 @@ set lazyredraw          " redraw only when we need to."
 set backspace=eol,start,indent
 set whichwrap+=<,>,h,l
 
+" Disabling swap files
+set noswapfile
+
 " Ignore case when searching
 set ignorecase
 
