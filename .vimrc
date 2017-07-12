@@ -61,6 +61,8 @@ set incsearch           " search as characters are entered
 set hlsearch            " highlight matches
 " set leader key
 let mapleader=","       " leader is commao"
+" copy selection to clipboard
+vmap <C-c> :w !pbcopy<CR><CR>
 " turn off search highlight
 nnoremap <leader><space> :nohlsearch<CR>
 
@@ -154,6 +156,7 @@ let g:syntastic_always_populate_loc_list = 0
 let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+let g:syntastic_javascript_checkers = ['eslint']
 
 " Quicker window movement
 nnoremap <C-j> <C-w>j
