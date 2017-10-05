@@ -40,4 +40,7 @@ Thumbs.db
 .idea/
 node_modules/
 bower_components/
-*.swp
+# Vim #
+######################
+.*.swp
+.*.swo
