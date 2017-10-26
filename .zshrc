@@ -4,6 +4,10 @@ export PATH=/usr/local/mysql/bin:$PATH
 export ZSH=$HOME/.oh-my-zsh
 export JAVA_HOME="$(/usr/libexec/java_home -v 1.8)"
 
+export ANDROID_HOME=$HOME/Library/Android/sdk
+export PATH=$PATH:$ANDROID_HOME/tools
+export PATH=$PATH:$ANDROID_HOME/platform-tools
+
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
@@ -87,27 +91,26 @@ alias commit='git commit -m'
 alias push='git push'
 alias pull='git pull'
 
-alias ec2_node_1='ssh -i ~/certs/EC2-haochuan-1.pem ubuntu@54.153.41.106'
-alias ec2_t2_medium='ssh -i ~/certs/ec2-ubuntu-t2-medium.pem ubuntu@52.33.28.190'
-alias home-server='ssh haochuan@67.169.42.235'
+alias home-server='ssh haochuan@73.189.60.31'
+alias ec2='cd ~/certs && ssh -i "aws-ec2-small-20170914.pem" ubuntu@ec2-35-166-74-128.us-west-2.compute.amazonaws.com'
 alias chrome-canary="/Applications/Google\ Chrome\ Canary.app/Contents/MacOS/Google\ Chrome\ Canary"
 
 
 
 
+
 #
-echo "                        _"
-echo "  /\  /\__ _  ___   ___| |__  _   _  __ _ _ __"
-echo ' / /_/ / _` |/ _ \ / __| `_ \| | | |/ _` | `_ \'
-echo "/ __  / (_| | (_) | (__| | | | |_| | (_| | | | |"
-echo "\/ /_/ \__,_|\___/ \___|_| |_|\__,_|\__,_|_| |_|"
+# echo "                        _"
+# echo "  /\  /\__ _  ___   ___| |__  _   _  __ _ _ __"
+# echo ' / /_/ / _` |/ _ \ / __| `_ \| | | |/ _` | `_ \'
+# echo "/ __  / (_| | (_) | (__| | | | |_| | (_| | | | |"
+# echo "\/ /_/ \__,_|\___/ \___|_| |_|\__,_|\__,_|_| |_|"
+fortune | cowsay | lolcat
 
 
 
 
 
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
 
 ### Brew dir
 export PATH="/usr/local/Cellar:$PATH"
