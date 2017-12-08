@@ -35,6 +35,7 @@ Plugin 'vim-syntastic/syntastic'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'styled-components/vim-styled-components'
 Plugin 'easymotion/vim-easymotion'
+Plugin 'prettier/vim-prettier', { 'do': 'yarn install' }
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -92,12 +93,17 @@ set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|bower_components'
 
 "Neo format
+
+let g:neoformat_javascript_prettier = {
+      \ 'exe': 'prettier',
+        \ 'args': ['--stdin', '--single-quote'],
+        \ 'stdin': 1}
+
+"Neo format
 "autocmd BufWritePre *.js Neoformat
 augroup fmt
   autocmd!
   autocmd BufWritePre *.js Neoformat
-  autocmd BufWritePre *.css Neoformat
-  autocmd BufWritePre *.json Neoformat
 augroup END
 let g:neoformat_javascript_prettier = {
       \ 'exe': 'prettier',
@@ -105,8 +111,26 @@ let g:neoformat_javascript_prettier = {
         \ 'stdin': 1}
 
 let g:neoformat_enabled_javascript = ['prettier']
-let g:neoformat_enabled_css = ['prettier']
-let g:neoformat_enabled_json = ['jsbeautify']
+
+
+"Prettier
+let g:prettier#exec_cmd_path = "/Users/haochuan/.nvm/versions/node/v6.11.4/bin/prettier"
+let g:prettier#autoformat = 0
+autocmd BufWritePre *.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md Prettier
+" max line length that prettier will wrap on
+let g:prettier#config#print_width = 80
+
+" number of spaces per indentation level
+let g:prettier#config#tab_width = 2
+
+" use tabs over spaces
+let g:prettier#config#use_tabs = 'false'
+
+" print semicolons
+let g:prettier#config#semi = 'true'
+
+" single quotes over double quotes
+" let g:prettier#config#single_quote = '--no-single-quote'
 
 " let g:neoformat_enabled_html = ['htmlbeautify']
 " Javascript
