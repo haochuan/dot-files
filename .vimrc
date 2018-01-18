@@ -89,6 +89,11 @@ let g:nerdtree_tabs_autofind=1
 " ctrlp
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
 set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
+" Search for ctags
+nnoremap <leader>. :CtrlPTag<cr>
+" ctag
+map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
+map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|bower_components'
 
@@ -114,7 +119,7 @@ let g:neoformat_enabled_javascript = ['prettier']
 
 
 "Prettier
-let g:prettier#exec_cmd_path = "/Users/haochuan/.nvm/versions/node/v6.11.4/bin/prettier"
+let g:prettier#exec_cmd_path = "/Users/haochuan/n/bin/prettier"
 let g:prettier#autoformat = 0
 autocmd BufWritePre *.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md Prettier
 " max line length that prettier will wrap on

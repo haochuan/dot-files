@@ -91,9 +91,24 @@ alias commit='git commit -m'
 alias push='git push'
 alias pull='git pull'
 
+#git related
+alias gs='git status'
+alias gau='git add -u'
+alias gaa='git add --all'
+alias gb='git branch'
+alias gl='git pull origin'
+alias gu='git push origin'
+alias gc='git checkout'
+alias gc='git commit -m'
+alias gac='git commit -am'
+
 alias home-server='ssh haochuan@73.189.60.31'
 alias ec2='cd ~/certs && ssh -i "aws-ec2-small-20170914.pem" ubuntu@ec2-35-166-74-128.us-west-2.compute.amazonaws.com'
 alias chrome-canary="/Applications/Google\ Chrome\ Canary.app/Contents/MacOS/Google\ Chrome\ Canary"
+
+#show only active application on mac dock
+alias minimal-dock='defaults write com.apple.dock static-only -bool TRUE'
+alias standard-dock='defaults write com.apple.dock static-only -bool FALSE'
 
 
 
@@ -115,8 +130,6 @@ fortune | cowsay | lolcat
 ### Brew dir
 export PATH="/usr/local/Cellar:$PATH"
 
-export NVM_DIR="/Users/haochuan/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
 ### for z
 
@@ -367,3 +380,5 @@ fi
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 export PATH="/usr/local/sbin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
+
+export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"  # Added by n-install (see http://git.io/n-install-repo).
