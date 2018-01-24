@@ -31,11 +31,11 @@ Plugin 'mustache/vim-mustache-handlebars'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'sbdchd/neoformat'
 Plugin 'jistr/vim-nerdtree-tabs'
-Plugin 'vim-syntastic/syntastic'
+" Plugin 'vim-syntastic/syntastic'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'styled-components/vim-styled-components'
 Plugin 'easymotion/vim-easymotion'
-Plugin 'prettier/vim-prettier', { 'do': 'yarn install' }
+Plugin 'prettier/vim-prettier'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -180,15 +180,15 @@ let g:jsdoc_additional_descriptions=1
 let g:jsdoc_enable_es6=1
 
 " syntastic
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+" set statusline+=%#warningmsg#
+" set statusline+=%{SyntasticStatuslineFlag()}
+" set statusline+=%*
 
-let g:syntastic_always_populate_loc_list = 0
-let g:syntastic_auto_loc_list = 0
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_javascript_checkers = ['eslint']
+" let g:syntastic_always_populate_loc_list = 0
+" let g:syntastic_auto_loc_list = 0
+" let g:syntastic_check_on_open = 1
+" let g:syntastic_check_on_wq = 0
+" let g:syntastic_javascript_checkers = ['eslint']
 
 " nerdcommenter
 " Add spaces after comment delimiters by default
