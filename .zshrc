@@ -90,6 +90,7 @@ alias addall='git add --all'
 alias commit='git commit -m'
 alias push='git push'
 alias pull='git pull'
+alias top='gtop'
 
 #git related
 alias gs='git status'
