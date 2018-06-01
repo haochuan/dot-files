@@ -37,6 +37,7 @@ Plugin 'styled-components/vim-styled-components'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'prettier/vim-prettier'
 
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -54,6 +55,7 @@ set lazyredraw          " redraw only when we need to."
 " Configure backspace so it acts as it should act
 set backspace=eol,start,indent
 set whichwrap+=<,>,h,l
+set diffopt+=vertical
 
 " Disabling swap files
 set noswapfile
@@ -214,3 +216,4 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
+
