@@ -36,6 +36,8 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'styled-components/vim-styled-components'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'prettier/vim-prettier'
+set rtp+=/usr/local/opt/fzf
+Plugin 'junegunn/fzf.vim'
 
 
 " All of your Plugins must be added before the following line
@@ -66,11 +68,11 @@ set ignorecase
 set incsearch           " search as characters are entered
 set hlsearch            " highlight matches
 " set leader key
-let mapleader=","       " leader is commao"
+let mapleader="\<Space>"       " leader is space"
 " copy selection to clipboard
 vmap <C-c> :w !pbcopy<CR><CR>
 " turn off search highlight
-nnoremap <leader><space> :nohlsearch<CR>
+nnoremap ,<space> :nohlsearch<CR>
 
 " jk is escape
 inoremap jk <esc>
@@ -216,4 +218,19 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-h> <C-w>h
 nnoremap <C-l> <C-w>l
+
+
+" FZF
+nnoremap <silent> <leader><space> :Files<CR>
+nnoremap <silent> <leader>a :Buffers<CR>
+nnoremap <silent> <leader>A :Windows<CR>
+nnoremap <silent> <leader>; :BLines<CR>
+nnoremap <silent> <leader>o :BTags<CR>
+nnoremap <silent> <leader>O :Tags<CR>
+nnoremap <silent> <leader>? :History<CR>
+nnoremap <silent> <leader>. :AgIn 
+
+nnoremap <silent> <leader>gl :Commits<CR>
+nnoremap <silent> <leader>ga :BCommits<CR>
+nnoremap <silent> <leader>ft :Filetypes<CR>
 
