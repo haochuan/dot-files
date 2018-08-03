@@ -111,6 +111,8 @@ alias chrome-canary="/Applications/Google\ Chrome\ Canary.app/Contents/MacOS/Goo
 alias minimal-dock='defaults write com.apple.dock static-only -bool TRUE'
 alias standard-dock='defaults write com.apple.dock static-only -bool FALSE'
 
+alias cheat='cht.sh'
+
 
 
 

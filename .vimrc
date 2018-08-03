@@ -32,6 +32,7 @@ Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'sbdchd/neoformat'
 Plugin 'jistr/vim-nerdtree-tabs'
 " Plugin 'vim-syntastic/syntastic'
+Plugin 'w0rp/ale'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'styled-components/vim-styled-components'
 Plugin 'easymotion/vim-easymotion'
@@ -93,13 +94,15 @@ let g:nerdtree_tabs_autofind=1
 " ctrlp
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
 set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
+
 " Search for ctags
 nnoremap <leader>. :CtrlPTag<cr>
+
 " ctag
 map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 
-let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|bower_components'
+let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|bower_components|.next'
 
 "Neo format
 
@@ -184,6 +187,7 @@ let g:jsdoc_additional_descriptions=1
 let g:jsdoc_enable_es6=1
 
 " syntastic
+" use ale instead
 " set statusline+=%#warningmsg#
 " set statusline+=%{SyntasticStatuslineFlag()}
 " set statusline+=%*
@@ -193,6 +197,10 @@ let g:jsdoc_enable_es6=1
 " let g:syntastic_check_on_open = 1
 " let g:syntastic_check_on_wq = 0
 " let g:syntastic_javascript_checkers = ['eslint']
+
+" ale
+" Enable ESLint only for JavaScript.
+let b:ale_linters = ['eslint']
 
 " nerdcommenter
 " Add spaces after comment delimiters by default
@@ -228,7 +236,7 @@ nnoremap <silent> <leader>; :BLines<CR>
 nnoremap <silent> <leader>o :BTags<CR>
 nnoremap <silent> <leader>O :Tags<CR>
 nnoremap <silent> <leader>? :History<CR>
-nnoremap <silent> <leader>. :AgIn 
+" nnoremap <silent> <leader>. :AgIn 
 
 nnoremap <silent> <leader>gl :Commits<CR>
 nnoremap <silent> <leader>ga :BCommits<CR>
