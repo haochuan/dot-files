@@ -12,7 +12,11 @@ export PATH=$PATH:$ANDROID_HOME/platform-tools
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="pure"
+# ZSH_THEME="pure"
+ZSH_THEME="spaceship"
+
+# Spaceship setting
+SPACESHIP_GIT_SYMBOL=''
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
