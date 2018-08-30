@@ -127,7 +127,7 @@ alias cheat='cht.sh'
 # echo ' / /_/ / _` |/ _ \ / __| `_ \| | | |/ _` | `_ \'
 # echo "/ __  / (_| | (_) | (__| | | | |_| | (_| | | | |"
 # echo "\/ /_/ \__,_|\___/ \___|_| |_|\__,_|\__,_|_| |_|"
-fortune | cowsay | lolcat
+# fortune | cowsay | lolcat
 
 
 

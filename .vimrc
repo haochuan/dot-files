@@ -31,14 +31,15 @@ Plugin 'mustache/vim-mustache-handlebars'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'sbdchd/neoformat'
 Plugin 'jistr/vim-nerdtree-tabs'
-" Plugin 'vim-syntastic/syntastic'
 Plugin 'w0rp/ale'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'styled-components/vim-styled-components'
 Plugin 'easymotion/vim-easymotion'
 Plugin 'prettier/vim-prettier'
-set rtp+=/usr/local/opt/fzf
+Plugin 'posva/vim-vue'
 Plugin 'junegunn/fzf.vim'
+
+set rtp+=/usr/local/opt/fzf
 
 
 " All of your Plugins must be added before the following line
@@ -106,28 +107,29 @@ let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|bower_components|.next
 
 "Neo format
 
-let g:neoformat_javascript_prettier = {
-      \ 'exe': 'prettier',
-        \ 'args': ['--stdin', '--single-quote'],
-        \ 'stdin': 1}
+" Then make Neoformat run on save:
+autocmd BufWritePre *.js Neoformat
 
-"Neo format
-"autocmd BufWritePre *.js Neoformat
-augroup fmt
-  autocmd!
-  autocmd BufWritePre *.js Neoformat
-augroup END
-let g:neoformat_javascript_prettier = {
-      \ 'exe': 'prettier',
-        \ 'args': ['--stdin', '--single-quote'],
-        \ 'stdin': 1}
+" Then make Neoformat run on save:
+autocmd BufWritePre *.vue Neoformat
 
-let g:neoformat_enabled_javascript = ['prettier']
+autocmd FileType javascript setlocal formatprg=prettier\ --stdin\ --parser\ flow\ --single-quote\ --trailing-comma\ es5
+autocmd FileType vue setlocal formatprg=prettier\ --stdin\ --parser\ flow\ --single-quote\ --trailing-comma\ es6
+
+" Use formatprg when available
+let g:neoformat_try_formatprg = 1
+
+" For Vue syntax
+" My syntax highlighting stops working randomly
+autocmd FileType vue syntax sync fromstart
 
 
-"Prettier
-let g:prettier#exec_cmd_path = "/Users/haochuan/n/bin/prettier"
+
+" Prettier
+" For files other than js
+let g:prettier#exec_cmd_path = "/usr/local/bin/prettier"
 let g:prettier#autoformat = 0
+
 autocmd BufWritePre *.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md Prettier
 " max line length that prettier will wrap on
 let g:prettier#config#print_width = 80
