@@ -111,17 +111,17 @@ let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|bower_components|.next
 autocmd BufWritePre *.js Neoformat
 
 " Then make Neoformat run on save:
-autocmd BufWritePre *.vue Neoformat
+" autocmd BufWritePre *.vue Neoformat
 
 autocmd FileType javascript setlocal formatprg=prettier\ --stdin\ --parser\ flow\ --single-quote\ --trailing-comma\ es5
-autocmd FileType vue setlocal formatprg=prettier\ --stdin\ --parser\ flow\ --single-quote\ --trailing-comma\ es6
+"" "autocmd FileType vue setlocal formatprg=prettier\ --stdin\ --parser\ flow\ --single-quote\ --trailing-comma\ es6
 
 " Use formatprg when available
 let g:neoformat_try_formatprg = 1
 
 " For Vue syntax
 " My syntax highlighting stops working randomly
-autocmd FileType vue syntax sync fromstart
+" autocmd FileType vue syntax sync fromstart
 
 
 
@@ -143,19 +143,9 @@ let g:prettier#config#use_tabs = 'false'
 " print semicolons
 let g:prettier#config#semi = 'true'
 
-" single quotes over double quotes
-" let g:prettier#config#single_quote = '--no-single-quote'
-
-" let g:neoformat_enabled_html = ['htmlbeautify']
-" Javascript
 " jsdoc syntax
 let g:javascript_plugin_jsdoc = 1
-" Prettier
-" autocmd FileType javascript.jsx,javascript setlocal formatprg=prettier\ --stdin\ --single-quote
-" format on save
-" autocmd BufWritePre *.js :normal gggqG
-" restore cursor position
-" autocmd BufWritePre *.js exe "normal! gggqG\<C-o>\<C-o>"
+
 " Run js file
 
 autocmd filetype python nnoremap <F4> :w <bar> exec '!python '.shellescape('%')<CR>
@@ -205,6 +195,7 @@ let g:jsdoc_enable_es6=1
 let b:ale_linters = ['eslint']
 
 " nerdcommenter
+" for commenting 
 " Add spaces after comment delimiters by default
 let g:NERDSpaceDelims = 1
 
@@ -212,7 +203,7 @@ let g:NERDSpaceDelims = 1
 " let g:NERDCompactSexyComs = 1
 
 " Align line-wise comment delimiters flush left instead of following code indentation
-" let g:NERDDefaultAlign = 'left'
+let g:NERDDefaultAlign = 'left'
 
 " Add your own custom formats or override the defaults
 " let g:NERDCustomDelimiters = { 'javascript': { 'left': '/**','right': '*/' } }
@@ -222,6 +213,13 @@ let g:NERDSpaceDelims = 1
 
 " Enable trimming of trailing whitespace when uncommenting
 " let g:NERDTrimTrailingWhitespace = 1
+
+" GitGutter
+nmap ]h <Plug>GitGutterNextHunk
+nmap [h <Plug>GitGutterPrevHunk
+" turn on line highlighting
+let g:gitgutter_highlight_lines = 1
+
 
 " Quicker window movement
 nnoremap <C-j> <C-w>j
