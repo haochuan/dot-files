@@ -22,7 +22,9 @@ Plugin 'bling/vim-airline'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'pangloss/vim-javascript'
 Plugin 'mattn/emmet-vim'
+" use tern for javascript with youcompleteme
 Plugin 'Valloric/YouCompleteMe'
+
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'heavenshell/vim-jsdoc'
 Plugin 'mxw/vim-jsx'
@@ -103,7 +105,12 @@ nnoremap <leader>. :CtrlPTag<cr>
 map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 
-let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|bower_components|.next'
+" ctrlp exclusion
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\.git$\|\.hg$\|\.svn$\|bower_components$\|dist$\|node_modules$\|project_files$\|test$|\.next$|\.vscode$',
+  \ 'file': '\v\.(exe|so|dll)$',
+  \ }
 
 "Neo format
 
@@ -113,7 +120,7 @@ autocmd BufWritePre *.js Neoformat
 " Then make Neoformat run on save:
 " autocmd BufWritePre *.vue Neoformat
 
-autocmd FileType javascript setlocal formatprg=prettier\ --stdin\ --parser\ flow\ --single-quote\ --trailing-comma\ es5
+autocmd FileType javascript setlocal formatprg=prettier\ --stdin\ --parser\ flow\ --single-quote\ es5
 "" "autocmd FileType vue setlocal formatprg=prettier\ --stdin\ --parser\ flow\ --single-quote\ --trailing-comma\ es6
 
 " Use formatprg when available
@@ -193,6 +200,8 @@ let g:jsdoc_enable_es6=1
 " ale
 " Enable ESLint only for JavaScript.
 let b:ale_linters = ['eslint']
+let g:ale_javascript_eslint_options='-c ~/.eslintrc.json'
+
 
 " nerdcommenter
 " for commenting 
@@ -218,7 +227,7 @@ let g:NERDDefaultAlign = 'left'
 nmap ]h <Plug>GitGutterNextHunk
 nmap [h <Plug>GitGutterPrevHunk
 " turn on line highlighting
-let g:gitgutter_highlight_lines = 1
+" let g:gitgutter_highlight_lines = 1
 
 
 " Quicker window movement

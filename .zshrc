@@ -118,7 +118,7 @@ alias gc='git commit -m'
 alias gac='git commit -am'
 
 alias home-server='ssh haochuan@73.189.60.31'
-alias ec2='cd ~/certs && ssh -i "aws-ec2-small-20170914.pem" ubuntu@ec2-35-166-74-128.us-west-2.compute.amazonaws.com'
+alias ec2='cd ~/certs && ssh -i "aws-ec2-small-20170914.pem" ubuntu@ec2-34-222-5-128.us-west-2.compute.amazonaws.com'
 alias chrome-canary="/Applications/Google\ Chrome\ Canary.app/Contents/MacOS/Google\ Chrome\ Canary"
 
 #show only active application on mac dock

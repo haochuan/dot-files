@@ -20,8 +20,8 @@ cp ~/.zshrc ./
 echo "done"
 
 
-echo "moving .jshintrc..."
-cp ~/.jshintrc ./
+echo "moving .eslintrc.json ..."
+cp ~/.eslintrc.json ./
 echo "done"
 
 echo "moving OceaNext vim theme..."
