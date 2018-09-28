@@ -1,4 +1,11 @@
 {
+  "env": {
+    "browser": true,
+    "node": true,
+    "worker": true,
+    "jquery": true,
+    "jest": true
+  },
   "parserOptions": {
     "ecmaVersion": 2017,
     "sourceType": "module",
