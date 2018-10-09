@@ -1,51 +1,40 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
-" enable paste from system clipboard
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
+call plug#begin('~/.vim/plugged')
 
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
 
 " The following are examples of different formats supported.
-" Keep Plugin commands between vundle#begin/end.
 " plugin on GitHub repo
-Plugin 'tpope/vim-fugitive'
-Plugin 'scrooloose/nerdtree'
-Plugin 'tpope/vim-surround'
-Plugin 'kien/ctrlp.vim'
-Plugin 'bling/vim-airline'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'pangloss/vim-javascript'
-Plugin 'mattn/emmet-vim'
+Plug 'tpope/vim-fugitive'
+Plug 'scrooloose/nerdtree'
+Plug 'tpope/vim-surround'
+Plug 'kien/ctrlp.vim'
+Plug 'bling/vim-airline'
+Plug 'scrooloose/nerdcommenter'
+Plug 'pangloss/vim-javascript'
+Plug 'mattn/emmet-vim'
 " use tern for javascript with youcompleteme
-Plugin 'Valloric/YouCompleteMe'
+Plug 'Valloric/YouCompleteMe'
 
-Plugin 'jiangmiao/auto-pairs'
-Plugin 'heavenshell/vim-jsdoc'
-Plugin 'mxw/vim-jsx'
-Plugin 'terryma/vim-multiple-cursors'
-Plugin 'mustache/vim-mustache-handlebars'
-Plugin 'Xuyuanp/nerdtree-git-plugin'
-Plugin 'sbdchd/neoformat'
-Plugin 'jistr/vim-nerdtree-tabs'
-Plugin 'w0rp/ale'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'styled-components/vim-styled-components'
-Plugin 'easymotion/vim-easymotion'
-Plugin 'prettier/vim-prettier'
-Plugin 'posva/vim-vue'
-Plugin 'junegunn/fzf.vim'
+Plug 'jiangmiao/auto-pairs'
+Plug 'heavenshell/vim-jsdoc'
+Plug 'mxw/vim-jsx'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'sbdchd/neoformat'
+Plug 'jistr/vim-nerdtree-tabs'
+Plug 'w0rp/ale'
+Plug 'airblade/vim-gitgutter'
+Plug 'easymotion/vim-easymotion'
+Plug 'prettier/vim-prettier'
+Plug 'junegunn/fzf.vim'
+
+" Initialize plugin system
+call plug#end()
 
 set rtp+=/usr/local/opt/fzf
 
-
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
 filetype plugin indent on    " required
 
 " UI
@@ -118,17 +107,11 @@ let g:ctrlp_custom_ignore = {
 autocmd BufWritePre *.js Neoformat
 
 " Then make Neoformat run on save:
-" autocmd BufWritePre *.vue Neoformat
 
 autocmd FileType javascript setlocal formatprg=prettier\ --stdin\ --parser\ flow\ --single-quote\ es5
-"" "autocmd FileType vue setlocal formatprg=prettier\ --stdin\ --parser\ flow\ --single-quote\ --trailing-comma\ es6
 
 " Use formatprg when available
 let g:neoformat_try_formatprg = 1
-
-" For Vue syntax
-" My syntax highlighting stops working randomly
-" autocmd FileType vue syntax sync fromstart
 
 
 
@@ -185,17 +168,6 @@ let g:jsdoc_input_description=1
 let g:jsdoc_additional_descriptions=1
 let g:jsdoc_enable_es6=1
 
-" syntastic
-" use ale instead
-" set statusline+=%#warningmsg#
-" set statusline+=%{SyntasticStatuslineFlag()}
-" set statusline+=%*
-
-" let g:syntastic_always_populate_loc_list = 0
-" let g:syntastic_auto_loc_list = 0
-" let g:syntastic_check_on_open = 1
-" let g:syntastic_check_on_wq = 0
-" let g:syntastic_javascript_checkers = ['eslint']
 
 " ale
 " Enable ESLint only for JavaScript.
