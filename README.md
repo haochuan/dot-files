@@ -1,10 +1,13 @@
 # Dot Files
 
-Dot Files for appication/system settings.
+My personal dot files for appication/system configs:
 
 * .gitingore_global
-* .vimrc
-* OceanicNext vim color schema
+* vim related config: `.vimrc`, color schema, etc.
+* `.zshrc`
+* `.eslintrc`
+* iterm config
+* And more
 
 # Installation
 
