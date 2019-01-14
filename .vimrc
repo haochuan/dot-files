@@ -22,12 +22,12 @@ Plug 'heavenshell/vim-jsdoc'
 Plug 'mxw/vim-jsx'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'sbdchd/neoformat'
+" Plug 'sbdchd/neoformat'
 Plug 'jistr/vim-nerdtree-tabs'
 Plug 'w0rp/ale'
 Plug 'airblade/vim-gitgutter'
 Plug 'easymotion/vim-easymotion'
-Plug 'prettier/vim-prettier'
+" Plug 'prettier/vim-prettier'
 Plug 'junegunn/fzf.vim'
 
 " Initialize plugin system
@@ -84,8 +84,14 @@ let g:nerdtree_tabs_focus_on_files=1
 let g:nerdtree_tabs_autofind=1
 
 " ctrlp
+" Close NERDTree window when use ctrlp open file
+let g:ctrlp_dont_split = 'NERD'
+" ctrlp exclusion
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
-set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\.git$\|\.hg$\|\.svn$\|bower_components$\|dist$\|node_modules$\|project_files$\|test$|\.next$|\.vscode$',
+  \ 'file': '\v\.(exe|so|dll)$',
+  \ }
 
 " Search for ctags
 nnoremap <leader>. :CtrlPTag<cr>
@@ -94,44 +100,7 @@ nnoremap <leader>. :CtrlPTag<cr>
 map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 
-" ctrlp exclusion
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\.git$\|\.hg$\|\.svn$\|bower_components$\|dist$\|node_modules$\|project_files$\|test$|\.next$|\.vscode$',
-  \ 'file': '\v\.(exe|so|dll)$',
-  \ }
 
-"Neo format
-
-" Then make Neoformat run on save:
-autocmd BufWritePre *.js Neoformat
-
-" Then make Neoformat run on save:
-
-autocmd FileType javascript setlocal formatprg=prettier\ --stdin\ --parser\ flow\ --single-quote\ es5
-
-" Use formatprg when available
-let g:neoformat_try_formatprg = 1
-
-
-
-" Prettier
-" For files other than js
-let g:prettier#exec_cmd_path = "/usr/local/bin/prettier"
-let g:prettier#autoformat = 0
-
-autocmd BufWritePre *.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md Prettier
-" max line length that prettier will wrap on
-let g:prettier#config#print_width = 80
-
-" number of spaces per indentation level
-let g:prettier#config#tab_width = 2
-
-" use tabs over spaces
-let g:prettier#config#use_tabs = 'false'
-
-" print semicolons
-let g:prettier#config#semi = 'true'
 
 " jsdoc syntax
 let g:javascript_plugin_jsdoc = 1
@@ -174,6 +143,21 @@ let g:jsdoc_enable_es6=1
 let b:ale_linters = ['eslint']
 let g:ale_javascript_eslint_options='-c ~/.eslintrc.json'
 
+" Enable ale auto fix
+let g:ale_fixers = {
+\   'javascript': ['prettier'],
+\   'css': ['prettier'],
+\   'html': ['prettier'],
+\   'markdown': ['prettier'],
+\   'scss': ['prettier'],
+\   'graphql': ['prettier'],
+\   'mdx': ['prettier'],
+\}
+" To have ALE run Prettier on save: 
+let g:ale_fix_on_save = 1
+" Prettier config
+let g:ale_javascript_prettier_options = '--single-quote --trailing-comma es5'
+
 
 " nerdcommenter
 " for commenting 
@@ -210,16 +194,16 @@ nnoremap <C-l> <C-w>l
 
 
 " FZF
-nnoremap <silent> <leader><space> :Files<CR>
+nnoremap <silent> <leader>f :Files<CR>
 nnoremap <silent> <leader>a :Buffers<CR>
 nnoremap <silent> <leader>A :Windows<CR>
 nnoremap <silent> <leader>; :BLines<CR>
 nnoremap <silent> <leader>o :BTags<CR>
-nnoremap <silent> <leader>O :Tags<CR>
-nnoremap <silent> <leader>? :History<CR>
+nnoremap <silent> <leader>t :Tags<CR>
+nnoremap <silent> <leader>h :History<CR>
 " nnoremap <silent> <leader>. :AgIn 
 
-nnoremap <silent> <leader>gl :Commits<CR>
+nnoremap <silent> <leader>gc :Commits<CR>
 nnoremap <silent> <leader>ga :BCommits<CR>
 nnoremap <silent> <leader>ft :Filetypes<CR>
 

@@ -1,12 +1,8 @@
 # Path to your oh-my-zsh installation.
+export TERM="xterm-256color"
 export PATH=/usr/local/bin:$PATH
 export PATH=/usr/local/mysql/bin:$PATH
 export ZSH=$HOME/.oh-my-zsh
-export JAVA_HOME="$(/usr/libexec/java_home -v 1.8)"
-
-export ANDROID_HOME=$HOME/Library/Android/sdk
-export PATH=$PATH:$ANDROID_HOME/tools
-export PATH=$PATH:$ANDROID_HOME/platform-tools
 
 
 # Set name of the theme to load.
@@ -66,7 +62,7 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git web-search zsh-syntax-highlighting)
+plugins=(git zsh-syntax-highlighting)
 
 # User configuration
 
@@ -117,15 +113,14 @@ alias gc='git checkout'
 alias gc='git commit -m'
 alias gac='git commit -am'
 
-alias home-server='ssh haochuan@73.189.60.31'
 alias ec2='cd ~/certs && ssh -i "aws-ec2-small-20170914.pem" ubuntu@ec2-34-222-5-128.us-west-2.compute.amazonaws.com'
-alias chrome-canary="/Applications/Google\ Chrome\ Canary.app/Contents/MacOS/Google\ Chrome\ Canary"
 
 #show only active application on mac dock
 alias minimal-dock='defaults write com.apple.dock static-only -bool TRUE'
 alias standard-dock='defaults write com.apple.dock static-only -bool FALSE'
 
-alias cheat='cht.sh'
+alias doc='cht.sh'
+alias vimconfig='vim ~/.vimrc'
 
 
 
@@ -183,8 +178,20 @@ _z() {
 
     local datafile="${_Z_DATA:-$HOME/.z}"
 
+    # if symlink, dereference
+    [ -h "$datafile" ] && datafile=$(readlink "$datafile")
+
     # bail if we don't own ~/.z and $_Z_OWNER not set
     [ -z "$_Z_OWNER" -a -f "$datafile" -a ! -O "$datafile" ] && return
+
+    _z_dirs () {
+        local line
+        while read line; do
+            # only count directories
+            [ -d "${line%%\|*}" ] && echo "$line"
+        done < "$datafile"
+        return 0
+    }
 
     # add entries
     if [ "$1" = "--add" ]; then
@@ -201,10 +208,7 @@ _z() {
 
         # maintain the data file
         local tempfile="$datafile.$RANDOM"
-        while read line; do
-            # only count directories
-            [ -d "${line%%\|*}" ] && echo $line
-        done < "$datafile" | awk -v path="$*" -v now="$(date +%s)" -F"|" '
+        _z_dirs | awk -v path="$*" -v now="$(date +%s)" -F"|" '
             BEGIN {
                 rank[path] = 1
                 time[path] = now
@@ -227,60 +231,58 @@ _z() {
                 } else for( x in rank ) print x "|" rank[x] "|" time[x]
             }
         ' 2>/dev/null >| "$tempfile"
-        # do our best to avoid clobbering the datafile in a race condition
+        # do our best to avoid clobbering the datafile in a race condition.
         if [ $? -ne 0 -a -f "$datafile" ]; then
             env rm -f "$tempfile"
         else
-            [ "$_Z_OWNER" ] && chown $_Z_OWNER:$(id -ng $_Z_OWNER) "$tempfile"
+            [ "$_Z_OWNER" ] && chown $_Z_OWNER:"$(id -ng $_Z_OWNER)" "$tempfile"
             env mv -f "$tempfile" "$datafile" || env rm -f "$tempfile"
         fi
 
     # tab completion
     elif [ "$1" = "--complete" -a -s "$datafile" ]; then
-        while read line; do
-            [ -d "${line%%\|*}" ] && echo $line
-        done < "$datafile" | awk -v q="$2" -F"|" '
+        _z_dirs | awk -v q="$2" -F"|" '
             BEGIN {
-                if( q == tolower(q) ) imatch = 1
                 q = substr(q, 3)
-                gsub(" ", ".*", q)
+                if( q == tolower(q) ) imatch = 1
+                gsub(/ /, ".*", q)
             }
             {
                 if( imatch ) {
-                    if( tolower($1) ~ tolower(q) ) print $1
+                    if( tolower($1) ~ q ) print $1
                 } else if( $1 ~ q ) print $1
             }
         ' 2>/dev/null
 
     else
         # list/go
+        local echo fnd last list opt typ
         while [ "$1" ]; do case "$1" in
-            --) while [ "$1" ]; do shift; local fnd="$fnd${fnd:+ }$1";done;;
-            -*) local opt=${1:1}; while [ "$opt" ]; do case ${opt:0:1} in
-                    c) local fnd="^$PWD $fnd";;
-                    h) echo "${_Z_CMD:-z} [-chlrtx] args" >&2; return;;
+            --) while [ "$1" ]; do shift; fnd="$fnd${fnd:+ }$1";done;;
+            -*) opt=${1:1}; while [ "$opt" ]; do case ${opt:0:1} in
+                    c) fnd="^$PWD $fnd";;
+                    e) echo=1;;
+                    h) echo "${_Z_CMD:-z} [-cehlrtx] args" >&2; return;;
+                    l) list=1;;
+                    r) typ="rank";;
+                    t) typ="recent";;
                     x) sed -i -e "\:^${PWD}|.*:d" "$datafile";;
-                    l) local list=1;;
-                    r) local typ="rank";;
-                    t) local typ="recent";;
                 esac; opt=${opt:1}; done;;
-             *) local fnd="$fnd${fnd:+ }$1";;
-        esac; local last=$1; [ "$#" -gt 0 ] && shift; done
-        [ "$fnd" -a "$fnd" != "^$PWD " ] || local list=1
+             *) fnd="$fnd${fnd:+ }$1";;
+        esac; last=$1; [ "$#" -gt 0 ] && shift; done
+        [ "$fnd" -a "$fnd" != "^$PWD " ] || list=1
 
         # if we hit enter on a completion just go there
         case "$last" in
             # completions will always start with /
-            /*) [ -z "$list" -a -d "$last" ] && cd "$last" && return;;
+            /*) [ -z "$list" -a -d "$last" ] && builtin cd "$last" && return;;
         esac
 
         # no file yet
         [ -f "$datafile" ] || return
 
         local cd
-        cd="$(while read line; do
-            [ -d "${line%%\|*}" ] && echo $line
-        done < "$datafile" | awk -v t="$(date +%s)" -v list="$list" -v typ="$typ" -v q="$fnd" -F"|" '
+        cd="$( < <( _z_dirs ) awk -v t="$(date +%s)" -v list="$list" -v typ="$typ" -v q="$fnd" -F"|" '
             function frecent(rank, time) {
                 # relate frequency and time
                 dx = t - time
@@ -289,19 +291,21 @@ _z() {
                 if( dx < 604800 ) return rank / 2
                 return rank / 4
             }
-            function output(files, out, common) {
+            function output(matches, best_match, common) {
                 # list or return the desired directory
                 if( list ) {
                     cmd = "sort -n >&2"
-                    for( x in files ) {
-                        if( files[x] ) printf "%-10s %s\n", files[x], x | cmd
+                    for( x in matches ) {
+                        if( matches[x] ) {
+                            printf "%-10s %s\n", matches[x], x | cmd
+                        }
                     }
                     if( common ) {
                         printf "%-10s %s\n", "common:", common > "/dev/stderr"
                     }
                 } else {
-                    if( common ) out = common
-                    print out
+                    if( common ) best_match = common
+                    print best_match
                 }
             }
             function common(matches) {
@@ -312,11 +316,9 @@ _z() {
                     }
                 }
                 if( short == "/" ) return
-                # use a copy to escape special characters, as we want to return
-                # the original. yeah, this escaping is awful.
-                clean_short = short
-                gsub(/\[\(\)\[\]\|\]/, "\\\\&", clean_short)
-                for( x in matches ) if( matches[x] && x !~ clean_short ) return
+                for( x in matches ) if( matches[x] && index(x, short) != 1 ) {
+                    return
+                }
                 return short
             }
             BEGIN {
@@ -349,8 +351,10 @@ _z() {
                 }
             }
         ')"
-        [ $? -gt 0 ] && return
-        [ "$cd" ] && cd "$cd"
+
+        [ $? -eq 0 ] && [ "$cd" ] && {
+          if [ "$echo" ]; then echo "$cd"; else builtin cd "$cd"; fi
+        }
     fi
 }
 
@@ -364,11 +368,11 @@ if type compctl >/dev/null 2>&1; then
         # populate directory list, avoid clobbering any other precmds.
         if [ "$_Z_NO_RESOLVE_SYMLINKS" ]; then
             _z_precmd() {
-                _z --add "${PWD:a}"
+                (_z --add "${PWD:a}" &)
             }
         else
             _z_precmd() {
-                _z --add "${PWD:A}"
+                (_z --add "${PWD:A}" &)
             }
         fi
         [[ -n "${precmd_functions[(r)_z_precmd]}" ]] || {
@@ -389,13 +393,12 @@ elif type complete >/dev/null 2>&1; then
     [ "$_Z_NO_PROMPT_COMMAND" ] || {
         # populate directory list. avoid clobbering other PROMPT_COMMANDs.
         grep "_z --add" <<< "$PROMPT_COMMAND" >/dev/null || {
-            PROMPT_COMMAND="$PROMPT_COMMAND"$'\n''_z --add "$(command pwd '$_Z_RESOLVE_SYMLINKS' 2>/dev/null)" 2>/dev/null;'
+            PROMPT_COMMAND="$PROMPT_COMMAND"$'\n''(_z --add "$(command pwd '$_Z_RESOLVE_SYMLINKS' 2>/dev/null)" 2>/dev/null &);'
         }
     }
 fi
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-export PATH="/usr/local/sbin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
 
 export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"  # Added by n-install (see http://git.io/n-install-repo).
