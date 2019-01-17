@@ -13,6 +13,10 @@ Plug 'kien/ctrlp.vim'
 Plug 'bling/vim-airline'
 Plug 'scrooloose/nerdcommenter'
 Plug 'pangloss/vim-javascript'
+" Typescript
+Plug 'leafgarland/typescript-vim'
+" Typescript
+Plug 'Quramy/tsuquyomi'
 Plug 'mattn/emmet-vim'
 " use tern for javascript with youcompleteme
 Plug 'Valloric/YouCompleteMe'
@@ -146,6 +150,9 @@ let g:ale_javascript_eslint_options='-c ~/.eslintrc.json'
 " Enable ale auto fix
 let g:ale_fixers = {
 \   'javascript': ['prettier'],
+\   'javascript.jsx': ['prettier'],
+\   'jsx': ['prettier'],
+\   'json': ['prettier'],
 \   'css': ['prettier'],
 \   'html': ['prettier'],
 \   'markdown': ['prettier'],
