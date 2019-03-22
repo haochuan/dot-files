@@ -24,6 +24,7 @@ Plug 'Valloric/YouCompleteMe'
 Plug 'jiangmiao/auto-pairs'
 Plug 'heavenshell/vim-jsdoc'
 Plug 'mxw/vim-jsx'
+Plug 'mustache/vim-mustache-handlebars'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 " Plug 'sbdchd/neoformat'
@@ -150,7 +151,6 @@ let g:ale_javascript_eslint_options='-c ~/.eslintrc.json'
 " Enable ale auto fix
 let g:ale_fixers = {
 \   'javascript': ['prettier'],
-\   'javascript.jsx': ['prettier'],
 \   'jsx': ['prettier'],
 \   'json': ['prettier'],
 \   'css': ['prettier'],
@@ -163,7 +163,7 @@ let g:ale_fixers = {
 " To have ALE run Prettier on save: 
 let g:ale_fix_on_save = 1
 " Prettier config
-let g:ale_javascript_prettier_options = '--single-quote --trailing-comma es5'
+let g:ale_javascript_prettier_options = '--single-quote --trailing-comma none'
 
 
 " nerdcommenter

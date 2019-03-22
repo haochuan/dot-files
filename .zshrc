@@ -121,6 +121,7 @@ alias standard-dock='defaults write com.apple.dock static-only -bool FALSE'
 
 alias doc='cht.sh'
 alias vimconfig='vim ~/.vimrc'
+alias vim='nvim'
 
 
 
