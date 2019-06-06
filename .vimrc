@@ -87,8 +87,10 @@ map <C-e> :NERDTreeTabsToggle<CR>
 " let g:nerdtree_tabs_open_on_console_startup=1
 let g:nerdtree_tabs_focus_on_files=1
 let g:nerdtree_tabs_autofind=1
-
-" excute files
+" ignore certain files
+let NERDTreeIgnore=['\.DS_Store$']
+"
+"excute files
 autocmd filetype python nnoremap <F4> :w <bar> exec '!python '.shellescape('%')<CR>
 autocmd filetype javascript nnoremap <F4> :w <bar> exec '!node '.shellescape('%')<CR>
 autocmd filetype c nnoremap <F4> :w <bar> exec '!gcc '.shellescape('%').' -o '.shellescape('%:r').' && '.shellescape('%:r')<CR>
@@ -126,9 +128,9 @@ let g:javascript_plugin_jsdoc = 1
 
 
 " Youcompleteme fix
-let g:ycm_global_ycm_extra_conf ='~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
-let g:ycm_filepath_completion_use_working_dir = 1
-let g:ycm_cache_omnifunc=0
+" let g:ycm_global_ycm_extra_conf ='~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+" let g:ycm_filepath_completion_use_working_dir = 1
+" let g:ycm_cache_omnifunc=0
 
 " vim-jsx
 " let g:jsx_ext_required = 0 " Allow JSX in normal JS files"
@@ -165,7 +167,7 @@ let g:ale_fixers = {
 \   'markdown': ['prettier'],
 \   'scss': ['prettier'],
 \   'graphql': ['prettier'],
-\   'mdx': ['prettier'],
+\   'mdx': ['prettier']
 \}
 " To have ALE run Prettier on save: 
 let g:ale_fix_on_save = 1

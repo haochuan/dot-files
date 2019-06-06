@@ -1,7 +1,5 @@
 # Path to your oh-my-zsh installation.
 export TERM="xterm-256color"
-export PATH=/usr/local/bin:$PATH
-export PATH=/usr/local/mysql/bin:$PATH
 export ZSH=$HOME/.oh-my-zsh
 
 
@@ -66,7 +64,7 @@ plugins=(git zsh-syntax-highlighting)
 
 # User configuration
 
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+# export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
@@ -102,16 +100,7 @@ alias push='git push'
 alias pull='git pull'
 alias top='gtop'
 
-#git related
-alias gs='git status'
-alias gau='git add -u'
-alias gaa='git add --all'
-alias gb='git branch'
-alias gpull='git pull origin'
-alias gpush='git push origin'
-alias gc='git checkout'
-alias gc='git commit -m'
-alias gac='git commit -am'
+
 
 alias ec2='cd ~/certs && ssh -i "aws-ec2-small-20170914.pem" ubuntu@ec2-34-222-5-128.us-west-2.compute.amazonaws.com'
 
@@ -121,7 +110,7 @@ alias standard-dock='defaults write com.apple.dock static-only -bool FALSE'
 
 alias doc='cht.sh'
 alias vimconfig='vim ~/.vimrc'
-alias vim='nvim'
+# alias vim='nvim'
 
 
 
@@ -403,3 +392,5 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 export PATH="/usr/local/sbin:$PATH"
 
 export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"  # Added by n-install (see http://git.io/n-install-repo).
+source /Users/haocliu/.oh-my-zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
