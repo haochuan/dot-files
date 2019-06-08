@@ -10,7 +10,6 @@ call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-fugitive'
 Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-surround'
-Plug 'kien/ctrlp.vim'
 Plug 'bling/vim-airline'
 Plug 'scrooloose/nerdcommenter'
 " Languages syntax highlight
@@ -103,16 +102,6 @@ augroup myvimrchooks
 augroup END
 
 " ======================= Plugins Config ============================
-
-" ctrlp
-" Close NERDTree window when use ctrlp open file
-let g:ctrlp_dont_split = 'NERD'
-" ctrlp exclusion
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
-let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\.git$\|\.hg$\|\.svn$\|bower_components$\|dist$\|node_modules$\|project_files$\|test$|\.next$|\.vscode$',
-  \ 'file': '\v\.(exe|so|dll)$',
-  \ }
 
 " Search for ctags
 nnoremap <leader>. :CtrlPTag<cr>
@@ -212,16 +201,27 @@ nnoremap <C-l> <C-w>l
 
 
 " FZF
-nnoremap <silent> <leader>f :Files<CR>
+" saerch for files is mapped as ctrl p
+nnoremap <C-p> :Files<Cr>
+nnoremap <C-g> :Rg<Cr>
 nnoremap <silent> <leader>b :Buffers<CR>
 nnoremap <silent> <leader>A :Windows<CR>
 nnoremap <silent> <leader>; :BLines<CR>
 nnoremap <silent> <leader>t :BTags<CR>
 nnoremap <silent> <leader>T :Tags<CR>
 nnoremap <silent> <leader>h :History<CR>
-nnoremap <silent> <leader>w :Ag
+" nnoremap <silent> <leader>ag :Ag
 
 nnoremap <silent> <leader>gc :Commits<CR>
 nnoremap <silent> <leader>ga :BCommits<CR>
 nnoremap <silent> <leader>ft :Filetypes<CR>
+
+" FZF.vim now supports this command out of the box
+" so this code is no longer needed.
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --hidden --ignore-case --no-heading --color=always '.shellescape(<q-args>), 1,
+  \   <bang>0 ? fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}, 'up:60%')
+  \           : fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}, 'right:50%:hidden', '?'),
+  \   <bang>0)
 
