@@ -110,7 +110,7 @@ alias standard-dock='defaults write com.apple.dock static-only -bool FALSE'
 
 alias doc='cht.sh'
 alias vimconfig='vim ~/.vimrc'
-# alias vim='nvim'
+alias vim='nvim'
 
 
 
@@ -395,5 +395,6 @@ export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PR
 source /Users/haocliu/.oh-my-zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # Setting ag as the default source for fzf
-export FZF_DEFAULT_COMMAND='rg --files --hidden --smartcase --glob "!.git/*"'
+export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
+
 
