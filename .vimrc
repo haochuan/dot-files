@@ -159,11 +159,11 @@ let g:ale_fixers = {
 \   'mdx': ['prettier']
 \}
 " To have ALE run Prettier on save: 
-let g:ale_fix_on_save = 1
+let g:ale_fix_on_save = 0
 " Prettier config
 let g:ale_javascript_prettier_options = '--single-quote --trailing-comma none'
 " auto fix keymap
-nmap <F6> <Plug>(ale_fix)
+nmap <F5> <Plug>(ale_fix)
 
 
 " nerdcommenter
