@@ -36,6 +36,14 @@ brew install vim
 - Install [GitHub - ggreer/the_silver_searcher: A code-searching tool similar to ack, but faster.](https://github.com/ggreer/the_silver_searcher)
 - Install [GitHub - junegunn/fzf: A command-line fuzzy finder](https://github.com/junegunn/fzf)
 - Install [GitHub - BurntSushi/ripgrep: ripgrep recursively searches directories for a regex pattern](https://github.com/BurntSushi/ripgrep#installation)
+- [https://github.com/neoclide/coc.nvim](https://github.com/neoclide/coc.nvim) 
+- [https://github.com/neoclide/coc-highlight](https://github.com/neoclide/coc-highlight) 
+- [GitHub - neoclide/coc-emmet: Emmet extension for coc.nvim](https://github.com/neoclide/coc-emmet)
+- [GitHub - neoclide/coc-yank: Yank highlight and persist yank history support for vim](https://github.com/neoclide/coc-yank)
+- [https://github.com/neoclide/coc-json](https://github.com/neoclide/coc-json) 
+- [GitHub - neoclide/coc-css: Css language server extension for coc.nvim](https://github.com/neoclide/coc-css)
+- [GitHub - neoclide/coc-tsserver: Tsserver extension for coc.nvim](https://github.com/neoclide/coc-tsserver)
+- [https://github.com/neoclide/coc-html](https://github.com/neoclide/coc-html) 
 
 ---
 
