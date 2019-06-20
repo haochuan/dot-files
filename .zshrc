@@ -7,17 +7,17 @@ export ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-# ZSH_THEME="pure"
-ZSH_THEME="powerlevel9k/powerlevel9k"
+# ZSH_THEME="powerlevel9k"
+ZSH_THEME="avit"
 
 # Powerlevel9k setting
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(
-  dir
-  vcs
-  status
-)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=()
-POWERLEVEL9K_PROMPT_ON_NEWLINE=true
+# POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(
+#   dir
+#   vcs
+#   status
+# )
+# POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=()
+# POWERLEVEL9K_PROMPT_ON_NEWLINE=true
 
 
 
@@ -398,3 +398,36 @@ source /Users/haocliu/.oh-my-zsh/plugins/zsh-syntax-highlighting/zsh-syntax-high
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
 
 
+# For iTerm2 Badge names
+iterm2_print_user_vars() {
+	iterm2_set_user_var gitStatus "$(getGitStatus)"
+}
+
+function getGitStatus {
+	if [[ $(git status 2> /dev/null) = ""  ]] then
+		echo "$(topDir)"
+	else
+		echo "$(getGitProjectDir)$(topDir) git:($(getGitBranch))$(isGitBranchDirty)"
+	fi
+}
+
+function getGitProjectDir {
+	basename $(git rev-parse --show-toplevel 2> /dev/null ) 2> /dev/null
+}
+
+function topDir {
+	if [[ $(basename $(pwd)) = $(getGitProjectDir)  ]] then
+		echo ""
+	else
+		echo "/$(basename $(pwd))"
+	fi
+}
+
+function getGitBranch {
+	basename $(git branch 2> /dev/null | grep \* | cut -c3-) 2> /dev/null
+    
+}
+
+function isGitBranchDirty {
+	[[ $(git diff --shortstat 2> /dev/null | tail -n1) != ""  ]] && echo "⚡ "
+}

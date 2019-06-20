@@ -33,6 +33,10 @@ Plug 'airblade/vim-gitgutter'
 Plug 'easymotion/vim-easymotion'
 " Plug 'prettier/vim-prettier'
 Plug 'junegunn/fzf.vim'
+Plug 'tpope/vim-repeat'
+
+"color
+" Plug 'dracula/vim', { 'as': 'dracula' }
 
 " Initialize plugin system
 call plug#end()
@@ -45,6 +49,8 @@ filetype plugin indent on    " required
 syntax enable
 set t_Co=256
 colorscheme OceanicNext
+
+" color dracula
 
 set number
 set showcmd "show command in bottom bar
@@ -92,6 +98,7 @@ let NERDTreeIgnore=['\.DS_Store$']
 "excute files
 autocmd filetype python nnoremap <F4> :w <bar> exec '!python '.shellescape('%')<CR>
 autocmd filetype javascript nnoremap <F4> :w <bar> exec '!node '.shellescape('%')<CR>
+autocmd filetype typescript nnoremap <F4> :w <bar> exec '!ts-node '.shellescape('%')<CR>
 autocmd filetype c nnoremap <F4> :w <bar> exec '!gcc '.shellescape('%').' -o '.shellescape('%:r').' && '.shellescape('%:r')<CR>
 autocmd filetype cpp nnoremap <F4> :w <bar> exec '!g++ '.shellescape('%').' -o '.shellescape('%:r').' && '.shellescape('%:r')<CR>
 
@@ -188,9 +195,10 @@ let g:javascript_plugin_jsdoc = 1
 let g:user_emmet_settings = {
 \  'javascript.jsx' : {
 \      'extends' : 'jsx',
-\  },
+\  }
 \}
-" jsDoc
+
+
 let g:jsdoc_allow_input_prompt=1
 let g:jsdoc_input_description=1
 let g:jsdoc_additional_descriptions=1
@@ -266,8 +274,8 @@ nnoremap <C-l> <C-w>l
 nnoremap <C-p> :Files<Cr>
 nnoremap <C-g> :Rg<Cr>
 nnoremap <silent> <leader>b :Buffers<CR>
-nnoremap <silent> <leader>A :Windows<CR>
-nnoremap <silent> <leader>; :BLines<CR>
+nnoremap <silent> <leader>w :Windows<CR>
+nnoremap <silent> <leader>l :BLines<CR>
 nnoremap <silent> <leader>t :BTags<CR>
 nnoremap <silent> <leader>T :Tags<CR>
 nnoremap <silent> <leader>h :History<CR>
@@ -285,4 +293,8 @@ command! -bang -nargs=* Rg
   \   <bang>0 ? fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}, 'up:60%')
   \           : fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}, 'right:50%:hidden', '?'),
   \   <bang>0)
+
+
+" add this at the end of all key mapping function to repeat.vim
+silent! call repeat#set("\<Plug>MyWonderfulMap", v:count)
 
