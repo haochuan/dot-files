@@ -100,6 +100,9 @@ alias push='git push'
 alias pull='git pull'
 alias top='gtop'
 
+# For LI
+alias rb='git review'
+
 
 
 alias ec2='cd ~/certs && ssh -i "aws-ec2-small-20170914.pem" ubuntu@ec2-34-222-5-128.us-west-2.compute.amazonaws.com'
