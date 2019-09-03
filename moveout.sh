@@ -14,6 +14,10 @@ echo "Moving .gitignore_global"
 cp ./.gitignore_global ~/.
 echo "Done"
 
+echo "Moving .gitconfig"
+cp ./.gitconfig ~/.
+echo "Done"
+
 echo "moving .zshrc..."
 cp ./.zshrc ~/.
 echo "done"
