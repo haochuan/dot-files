@@ -395,42 +395,6 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 export PATH="/usr/local/sbin:$PATH"
 
 export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"  # Added by n-install (see http://git.io/n-install-repo).
-source /Users/haocliu/.oh-my-zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # Setting ag as the default source for fzf
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
-
-
-# For iTerm2 Badge names
-iterm2_print_user_vars() {
-	iterm2_set_user_var gitStatus "$(getGitStatus)"
-}
-
-function getGitStatus {
-	if [[ $(git status 2> /dev/null) = ""  ]] then
-		echo "$(topDir)"
-	else
-		echo "$(getGitProjectDir)$(topDir) git:($(getGitBranch))$(isGitBranchDirty)"
-	fi
-}
-
-function getGitProjectDir {
-	basename $(git rev-parse --show-toplevel 2> /dev/null ) 2> /dev/null
-}
-
-function topDir {
-	if [[ $(basename $(pwd)) = $(getGitProjectDir)  ]] then
-		echo ""
-	else
-		echo "/$(basename $(pwd))"
-	fi
-}
-
-function getGitBranch {
-	basename $(git branch 2> /dev/null | grep \* | cut -c3-) 2> /dev/null
-    
-}
-
-function isGitBranchDirty {
-	[[ $(git diff --shortstat 2> /dev/null | tail -n1) != ""  ]] && echo "⚡ "
-}
