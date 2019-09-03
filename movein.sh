@@ -1,4 +1,3 @@
-
 #!/bin/bash
 
 echo "Staring moving dot-files from local to remote"
