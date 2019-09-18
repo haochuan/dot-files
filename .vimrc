@@ -41,6 +41,7 @@ Plug 'easymotion/vim-easymotion'
 " Plug 'prettier/vim-prettier'
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-repeat'
+Plug 'djoshea/vim-autoread'
 
 "color
 " Plug 'dracula/vim', { 'as': 'dracula' }
