@@ -42,6 +42,8 @@ Plug 'easymotion/vim-easymotion'
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-repeat'
 Plug 'djoshea/vim-autoread'
+" For rust
+Plug 'rust-lang/rust.vim'
 
 "color
 " Plug 'dracula/vim', { 'as': 'dracula' }
@@ -109,6 +111,9 @@ autocmd filetype javascript nnoremap <F4> :w <bar> exec '!node '.shellescape('%'
 autocmd filetype typescript nnoremap <F4> :w <bar> exec '!ts-node '.shellescape('%')<CR>
 autocmd filetype c nnoremap <F4> :w <bar> exec '!gcc '.shellescape('%').' -o '.shellescape('%:r').' && '.shellescape('%:r')<CR>
 autocmd filetype cpp nnoremap <F4> :w <bar> exec '!g++ '.shellescape('%').' -o '.shellescape('%:r').' && '.shellescape('%:r')<CR>
+" run cargo
+" autocmd filetype rust nnoremap <F4> :w <bar> exec '!cargo run'<CR> 
+autocmd filetype rust nnoremap <F4> :w <bar> exec '!rustc '.shellescape('%').' -o '.shellescape('%:r').' && '.shellescape('%:r')<CR>
 
 " auto load vimrc when there is a change
 augroup myvimrchooks
@@ -233,7 +238,8 @@ let g:ale_fixers = {
 \   'markdown': ['prettier'],
 \   'scss': ['prettier'],
 \   'graphql': ['prettier'],
-\   'mdx': ['prettier']
+\   'mdx': ['prettier'],
+\   'rust': ['rustfmt']
 \}
 " To have ALE run Prettier on save: 
 let g:ale_fix_on_save = 0
@@ -264,8 +270,8 @@ let g:NERDDefaultAlign = 'left'
 " let g:NERDTrimTrailingWhitespace = 1
 
 " GitGutter
-nmap ]h <Plug>GitGutterNextHunk
-nmap [h <Plug>GitGutterPrevHunk
+nmap ]h <Plug>(GitGutterNextHunk)
+nmap [h <Plug>(GitGutterPrevHunk)
 " turn on line highlighting
 " let g:gitgutter_highlight_lines = 1
 
