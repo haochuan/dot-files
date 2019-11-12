@@ -31,7 +31,7 @@ cp ~/.vim/colors/OceanicNext.vim ./
 echo "done"
 
 echo "moving startship config..."
-cp ~/.config/starship.toml ./
+cp ~/.config/starship.toml ./.config/.
 echo "done"
 
  

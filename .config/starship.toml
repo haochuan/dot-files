@@ -38,19 +38,19 @@ symbol = " "
 style = "bold dimmed green"
 
 [git_status]
-conflicted = "🏳"
-ahead = "🏎💨"
-behind = "😰"
-diverged = "😵"
-untracked = "🤷‍"
-stashed = "📦"
-modified = "📝"
+conflicted = "🏳 "
+ahead = "🏎💨 "
+behind = "😰 "
+diverged = "😵 "
+untracked = "🤷 ‍"
+stashed = "📦 "
+modified = "📝 "
 staged.value = "++"
 staged.style = "green"
 staged_count.enabled = true
 staged_count.style = "green"
-renamed = "👅"
-deleted = "🗑 "
+renamed = "👅 "
+deleted = "🗑  "
 cherry_pick = "🍒 PICKING"
 
 [git_branch]
@@ -60,4 +60,3 @@ symbol = "🌵 "
 symbol = "🦁"
 error_symbol = "🧨 "
 use_symbol_for_status = true
-

@@ -112,8 +112,8 @@ autocmd filetype typescript nnoremap <F4> :w <bar> exec '!ts-node '.shellescape(
 autocmd filetype c nnoremap <F4> :w <bar> exec '!gcc '.shellescape('%').' -o '.shellescape('%:r').' && '.shellescape('%:r')<CR>
 autocmd filetype cpp nnoremap <F4> :w <bar> exec '!g++ '.shellescape('%').' -o '.shellescape('%:r').' && '.shellescape('%:r')<CR>
 " run cargo
-" autocmd filetype rust nnoremap <F4> :w <bar> exec '!cargo run'<CR> 
-autocmd filetype rust nnoremap <F4> :w <bar> exec '!rustc '.shellescape('%').' -o '.shellescape('%:r').' && '.shellescape('%:r')<CR>
+" autocmd filetype rust nnoremap <F6> :w <bar> exec '!cargo run'<CR> 
+" autocmd filetype rust nnoremap <F4> :w <bar> exec '!rustc '.shellescape('%').' -o '.shellescape('%:r').' && '.shellescape('%:r')<CR>
 
 " auto load vimrc when there is a change
 augroup myvimrchooks
@@ -299,16 +299,10 @@ nnoremap <silent> <leader>gc :Commits<CR>
 nnoremap <silent> <leader>ga :BCommits<CR>
 nnoremap <silent> <leader>ft :Filetypes<CR>
 
-" FZF.vim now supports this command out of the box
-" so this code is no longer needed.
-command! -bang -nargs=* Rg
-  \ call fzf#vim#grep(
-  \   'rg --column --line-number --hidden --ignore-case --no-heading --color=always '.shellescape(<q-args>), 1,
-  \   <bang>0 ? fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}, 'up:60%')
-  \           : fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}, 'right:50%:hidden', '?'),
-  \   <bang>0)
-
-
 " add this at the end of all key mapping function to repeat.vim
 silent! call repeat#set("\<Plug>MyWonderfulMap", v:count)
 
+" rust.vim
+
+let g:rust_recommended_style = 0
+let g:rustfmt_autosave = 0
