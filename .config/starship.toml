@@ -1,0 +1,63 @@
+prompt_order = [
+    "username",
+    "hostname",
+    # "kubernetes",
+    "directory",
+    "git_branch",
+    # "git_state",
+    "git_status",
+    # "package",
+    # "dotnet",
+    # "golang",
+    # "java",
+    # "nodejs",
+    # "python",
+    # "ruby",
+    # "rust",
+    # "nix_shell",
+    # "conda",
+    # "memory_usage",
+    # "aws",
+    # "env_var",
+    "cmd_duration",
+    "line_break",
+    # "jobs",
+    "battery",
+    # "time",
+    "character",
+]
+
+[line_break]
+disabled = false
+
+[memory_usage]
+show_percentage = true
+show_swap = true
+threshold = -1
+symbol = " "
+style = "bold dimmed green"
+
+[git_status]
+conflicted = "🏳"
+ahead = "🏎💨"
+behind = "😰"
+diverged = "😵"
+untracked = "🤷‍"
+stashed = "📦"
+modified = "📝"
+staged.value = "++"
+staged.style = "green"
+staged_count.enabled = true
+staged_count.style = "green"
+renamed = "👅"
+deleted = "🗑 "
+cherry_pick = "🍒 PICKING"
+
+[git_branch]
+symbol = "🌵 "
+
+[character]
+symbol = "🦁"
+error_symbol = "🧨 "
+use_symbol_for_status = true
+

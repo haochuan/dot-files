@@ -30,3 +30,7 @@ echo "done"
 echo "moving OceaNext vim theme..."
 cp ./OceanicNext.vim ~/.vim/colors/.
 echo "done"
+
+echo "moving startship config..."
+cp ./.config/starship.toml ~/.config/.
+echo "done"

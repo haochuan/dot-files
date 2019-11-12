@@ -22,13 +22,16 @@ echo "moving .zshrc..."
 cp ~/.zshrc ./
 echo "done"
 
-
 echo "moving .eslintrc.json ..."
 cp ~/.eslintrc.json ./
 echo "done"
 
 echo "moving OceaNext vim theme..."
 cp ~/.vim/colors/OceanicNext.vim ./
+echo "done"
+
+echo "moving startship config..."
+cp ~/.config/starship.toml ./
 echo "done"
 
  
