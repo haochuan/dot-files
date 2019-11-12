@@ -38,14 +38,10 @@ symbol = " "
 style = "bold dimmed green"
 
 [git_status]
-conflicted = "🏳 "
-ahead = "🏎💨 "
-behind = "😰 "
+conflicted = "😰 "
 diverged = "😵 "
-untracked = "🤷 ‍"
 stashed = "📦 "
 modified = "📝 "
-staged.value = "++"
 staged.style = "green"
 staged_count.enabled = true
 staged_count.style = "green"
