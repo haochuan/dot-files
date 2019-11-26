@@ -18,6 +18,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-surround'
 Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'scrooloose/nerdcommenter'
 " Languages syntax highlight
 Plug 'sheerun/vim-polyglot'
@@ -59,6 +60,7 @@ filetype plugin indent on    " required
 syntax enable
 set t_Co=256
 colorscheme OceanicNext
+let g:airline_theme='base16'
 
 " color dracula
 
@@ -100,6 +102,7 @@ set expandtab "tag are spaces"
 map <C-e> :NERDTreeTabsToggle<CR>
 " Nerdtree Tab
 " let g:nerdtree_tabs_open_on_console_startup=1
+let NERDTreeShowHidden=1
 let g:nerdtree_tabs_focus_on_files=1
 let g:nerdtree_tabs_autofind=1
 " ignore certain files
@@ -137,13 +140,18 @@ set nowritebackup
 set cmdheight=2
 
 " You will have bad experience for diagnostic messages when it's default 4000.
-set updatetime=300
+set updatetime=100
 
 " don't give |ins-completion-menu| messages.
 set shortmess+=c
 
 " always show signcolumns
 set signcolumn=yes
+
+
+let g:python_host_prog  = "/usr/bin/python"
+let g:python3_host_prog = "/usr/local/bin/python3"
+
 
 " Use tab for trigger completion with characters ahead and navigate.
 " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
@@ -242,7 +250,7 @@ let g:ale_fixers = {
 \   'rust': ['rustfmt']
 \}
 " To have ALE run Prettier on save: 
-let g:ale_fix_on_save = 1
+let g:ale_fix_on_save = 0
 " Prettier config
 let g:ale_javascript_prettier_options = '--single-quote --trailing-comma none'
 " auto fix keymap
@@ -270,8 +278,8 @@ let g:NERDDefaultAlign = 'left'
 " let g:NERDTrimTrailingWhitespace = 1
 
 " GitGutter
-nmap ]h <Plug>(GitGutterNextHunk)
-nmap [h <Plug>(GitGutterPrevHunk)
+nmap ]c <Plug>(GitGutterNextHunk)
+nmap [c <Plug>(GitGutterPrevHunk)
 " turn on line highlighting
 " let g:gitgutter_highlight_lines = 1
 
@@ -284,6 +292,9 @@ nnoremap <C-l> <C-w>l
 
 
 " FZF
+" [Buffers] Jump to the existing window if possible
+let g:fzf_buffers_jump = 1
+
 " saerch for files is mapped as ctrl p
 nnoremap <C-p> :Files<Cr>
 nnoremap <C-g> :Rg<Cr>
