@@ -29,6 +29,7 @@ Plug 'tpope/vim-repeat'
 Plug 'easymotion/vim-easymotion'
 " For rust
 Plug 'rust-lang/rust.vim'
+Plug 'morhetz/gruvbox'
 
 " Initialize plugin system
 call plug#end()
@@ -41,7 +42,8 @@ filetype plugin indent on    " required
 " UI
 syntax enable
 set t_Co=256
-colorscheme OceanicNext
+" colorscheme OceanicNext
+colorscheme gruvbox
 let g:airline_theme='base16'
 
 set number
@@ -86,6 +88,8 @@ map <C-e> <plug>NERDTreeTabsToggle<CR>
 let NERDTreeShowHidden=1
 let g:nerdtree_tabs_focus_on_files=1
 let g:nerdtree_tabs_autofind=1
+
+let g:NERDTreeGitStatusWithFlags = 1
 
 " ignore certain files
 let NERDTreeIgnore=['\.DS_Store$']
