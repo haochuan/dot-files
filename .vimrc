@@ -1,5 +1,3 @@
-set nocompatible              " be iMproved, required
-filetype off                  " required
 
 " Install plugged if not exists
 if empty(glob('~/.vim/autoload/plug.vim'))
@@ -11,49 +9,33 @@ endif
 " Initial plugged
 call plug#begin('~/.vim/plugged')
 
-
-" The following are examples of different formats supported.
-" plugin on GitHub repo
-Plug 'tpope/vim-fugitive'
 Plug 'scrooloose/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+Plug 'jistr/vim-nerdtree-tabs'
 Plug 'tpope/vim-surround'
 Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'scrooloose/nerdcommenter'
-" Languages syntax highlight
-Plug 'sheerun/vim-polyglot'
-" Typescript
-Plug 'Quramy/tsuquyomi'
-Plug 'mattn/emmet-vim'
-" Use release branch
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
-" Plug 'Valloric/YouCompleteMe'
-
-Plug 'jiangmiao/auto-pairs'
+" Plug 'ryanoasis/vim-devicons'
+Plug 'airblade/vim-gitgutter'
 Plug 'heavenshell/vim-jsdoc'
 Plug 'terryma/vim-multiple-cursors'
-Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'jistr/vim-nerdtree-tabs'
-" prettier and eslint
-Plug 'w0rp/ale'
-Plug 'airblade/vim-gitgutter'
-Plug 'easymotion/vim-easymotion'
-" Plug 'prettier/vim-prettier'
 Plug 'junegunn/fzf.vim'
+" Plug 'dense-analysis/ale'
+
 Plug 'tpope/vim-repeat'
-Plug 'djoshea/vim-autoread'
+Plug 'easymotion/vim-easymotion'
 " For rust
 Plug 'rust-lang/rust.vim'
-
-"color
-" Plug 'dracula/vim', { 'as': 'dracula' }
 
 " Initialize plugin system
 call plug#end()
 
+set nocompatible              " be iMproved, required
+filetype off                  " required
 set rtp+=/usr/local/opt/fzf
-
 filetype plugin indent on    " required
 
 " UI
@@ -62,13 +44,12 @@ set t_Co=256
 colorscheme OceanicNext
 let g:airline_theme='base16'
 
-" color dracula
-
 set number
 set showcmd "show command in bottom bar
 set cursorline "show current line
 set showmatch "highlight matching (){}{}
 set lazyredraw          " redraw only when we need to."
+
 " Configure backspace so it acts as it should act
 set backspace=eol,start,indent
 set whichwrap+=<,>,h,l
@@ -97,14 +78,15 @@ set softtabstop=2
 set shiftwidth=2
 set expandtab "tag are spaces"
 
-" Key Mapping
-" Nerdtree
-map <C-e> :NERDTreeTabsToggle<CR>
-" Nerdtree Tab
-" let g:nerdtree_tabs_open_on_console_startup=1
+" for rust tab is 4
+autocmd Filetype rust setlocal ts=4 sw=4 sts=0 expandtab
+
+" Check if NERDTree is open or active
+map <C-e> <plug>NERDTreeTabsToggle<CR>
 let NERDTreeShowHidden=1
 let g:nerdtree_tabs_focus_on_files=1
 let g:nerdtree_tabs_autofind=1
+
 " ignore certain files
 let NERDTreeIgnore=['\.DS_Store$']
 "
@@ -118,11 +100,6 @@ autocmd filetype cpp nnoremap <F4> :w <bar> exec '!g++ '.shellescape('%').' -o '
 " autocmd filetype rust nnoremap <F6> :w <bar> exec '!cargo run'<CR> 
 " autocmd filetype rust nnoremap <F4> :w <bar> exec '!rustc '.shellescape('%').' -o '.shellescape('%:r').' && '.shellescape('%:r')<CR>
 
-" auto load vimrc when there is a change
-augroup myvimrchooks
-    au!
-    autocmd bufwritepost .vimrc source ~/.vimrc
-augroup END
 
 " ======================= Plugins Config ============================
 "
@@ -130,17 +107,19 @@ augroup END
 "
 " STARTING FOR COC
 " if hidden is not set, TextEdit might fail.
+let g:coc_global_extensions = [
+  \ 'coc-snippets',
+  \ 'coc-pairs',
+  \ 'coc-tsserver',
+  \ 'coc-eslint', 
+  \ 'coc-prettier', 
+  \ 'coc-json', 
+  \ 'coc-rls', 
+  \ ]
+
 set hidden
-
-" Some servers have issues with backup files, see #649
-set nobackup
-set nowritebackup 
-
-" Better display for messages
-set cmdheight=2
-
 " You will have bad experience for diagnostic messages when it's default 4000.
-set updatetime=100
+set updatetime=300
 
 " don't give |ins-completion-menu| messages.
 set shortmess+=c
@@ -166,16 +145,22 @@ function! s:check_back_space() abort
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
-" Remap keys for gotos
+"
+" Use `[g` and `]g` to navigate diagnostics
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+"" Remap keys for gotos
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
 " Use K to show documentation in preview window
+nnoremap <expr><C-f> coc#util#has_float() ? coc#util#float_scroll(1) : "\<C-f>"
+nnoremap <expr><C-b> coc#util#has_float() ? coc#util#float_scroll(0) : "\<C-b>"
+
+
 nnoremap <silent> K :call <SID>show_documentation()<CR>
-
-
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
     execute 'h '.expand('<cword>')
@@ -184,6 +169,76 @@ function! s:show_documentation()
   endif
 endfunction
 
+" Highlight symbol under cursor on CursorHold
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Remap for rename current word
+nmap <leader>rn <Plug>(coc-rename)
+
+" Remap for format selected region
+xmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
+
+augroup mygroup
+  autocmd!
+  " Setup formatexpr specified filetype(s).
+  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+  " Update signature help on jump placeholder
+  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+augroup end
+
+" Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
+xmap <leader>a  <Plug>(coc-codeaction-selected)
+nmap <leader>a  <Plug>(coc-codeaction-selected)
+
+" Remap for do codeAction of current line
+nmap <leader>ac  <Plug>(coc-codeaction)
+" Fix autofix problem of current line
+nmap <leader>qf  <Plug>(coc-fix-current)
+
+" Create mappings for function text object, requires document symbols feature of languageserver.
+xmap if <Plug>(coc-funcobj-i)
+xmap af <Plug>(coc-funcobj-a)
+omap if <Plug>(coc-funcobj-i)
+omap af <Plug>(coc-funcobj-a)
+
+" Use <C-d> for select selections ranges, needs server support, like: coc-tsserver, coc-python
+nmap <silent> <C-d> <Plug>(coc-range-select)
+xmap <silent> <C-d> <Plug>(coc-range-select)
+
+" Use `:Format` to format current buffer
+command! -nargs=0 Format :call CocAction('format')
+
+" Use `:Fold` to fold current buffer
+command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+
+" use `:OR` for organize import of current buffer
+command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
+
+" Add status line support, for integration with other plugin, checkout `:h coc-status`
+set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+
+" Using CocList
+" Show all diagnostics
+nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
+" Manage extensions
+nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
+" Show commands
+nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
+" Find symbol of current document
+nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
+" Search workspace symbols
+nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
+" Do default action for next item.
+nnoremap <silent> <space>j  :<C-u>CocNext<CR>
+" Do default action for previous item.
+nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
+" Resume latest coc list
+nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+
+" auto fix keymap
+nmap <F5> :call CocAction('format')<cr>
+
 " END FOR COC
 " Search for ctags
 nnoremap <leader>. :CtrlPTag<cr>
@@ -191,31 +246,17 @@ nnoremap <leader>. :CtrlPTag<cr>
 " coc-color-highlight
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
-
 " coc-yank
 nnoremap <silent> <space>y  :<C-u>CocList -A --normal yank<cr>
-
-" ctag
-" map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
-" map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
-
 
 
 " jsdoc syntax
 let g:javascript_plugin_jsdoc = 1
 
-
-" Youcompleteme fix
-" let g:ycm_global_ycm_extra_conf ='~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
-" let g:ycm_filepath_completion_use_working_dir = 1
-" let g:ycm_cache_omnifunc=0
-
-" vim-jsx
-" let g:jsx_ext_required = 0 " Allow JSX in normal JS files"
 " emmet
 let g:user_emmet_settings = {
 \  'javascript.jsx' : {
-\      'extends' : 'jsx',
+\      'extends' : 'jsx'
 \  }
 \}
 
@@ -225,36 +266,6 @@ let g:jsdoc_input_description=1
 let g:jsdoc_additional_descriptions=1
 let g:jsdoc_enable_es6=1
 
-
-" ale
-" Enable ESLint only for JavaScript.
-let b:ale_linters = ['eslint']
-let g:ale_javascript_eslint_options='-c ~/.eslintrc.json'
-let g:ale_sign_error = '❌'
-let g:ale_sign_warning = '⚠️'
-" keymap for next/previous eslint error, l means linter
-nmap <silent> [l <Plug>(ale_previous_wrap)
-nmap <silent> ]l <Plug>(ale_next_wrap)
-
-" Enable ale auto fix using prettier
-let g:ale_fixers = {
-\   'javascript': ['prettier'],
-\   'jsx': ['prettier'],
-\   'json': ['prettier'],
-\   'css': ['prettier'],
-\   'html': ['prettier'],
-\   'markdown': ['prettier'],
-\   'scss': ['prettier'],
-\   'graphql': ['prettier'],
-\   'mdx': ['prettier'],
-\   'rust': ['rustfmt']
-\}
-" To have ALE run Prettier on save: 
-let g:ale_fix_on_save = 0
-" Prettier config
-let g:ale_javascript_prettier_options = '--single-quote --trailing-comma none'
-" auto fix keymap
-nmap <F5> <Plug>(ale_fix)
 
 
 " nerdcommenter
@@ -267,15 +278,6 @@ let g:NERDSpaceDelims = 1
 
 " Align line-wise comment delimiters flush left instead of following code indentation
 let g:NERDDefaultAlign = 'left'
-
-" Add your own custom formats or override the defaults
-" let g:NERDCustomDelimiters = { 'javascript': { 'left': '/**','right': '*/' } }
-
-" Allow commenting and inverting empty lines (useful when commenting a region)
-" let g:NERDCommentEmptyLines = 1
-
-" Enable trimming of trailing whitespace when uncommenting
-" let g:NERDTrimTrailingWhitespace = 1
 
 " GitGutter
 nmap ]c <Plug>(GitGutterNextHunk)
