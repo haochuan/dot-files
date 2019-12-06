@@ -23,6 +23,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'heavenshell/vim-jsdoc'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'junegunn/fzf.vim'
+Plug 'jiangmiao/auto-pairs'
 " Plug 'dense-analysis/ale'
 
 Plug 'tpope/vim-repeat'
@@ -142,6 +143,7 @@ inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
       \ <SID>check_back_space() ? "\<TAB>" :
       \ coc#refresh()
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
 function! s:check_back_space() abort
@@ -322,4 +324,4 @@ silent! call repeat#set("\<Plug>MyWonderfulMap", v:count)
 " rust.vim
 
 let g:rust_recommended_style = 0
-let g:rustfmt_autosave = 0
+let g:rustfmt_autosave = 1
