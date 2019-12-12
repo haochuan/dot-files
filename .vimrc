@@ -18,19 +18,30 @@ Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'scrooloose/nerdcommenter'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-" Plug 'ryanoasis/vim-devicons'
+Plug 'ryanoasis/vim-devicons'
 Plug 'airblade/vim-gitgutter'
 Plug 'heavenshell/vim-jsdoc'
+Plug 'sheerun/vim-polyglot' " for syntax highlight
 Plug 'terryma/vim-multiple-cursors'
 Plug 'junegunn/fzf.vim'
-Plug 'jiangmiao/auto-pairs'
-" Plug 'dense-analysis/ale'
 
 Plug 'tpope/vim-repeat'
 Plug 'easymotion/vim-easymotion'
 " For rust
 Plug 'rust-lang/rust.vim'
 Plug 'morhetz/gruvbox'
+
+" Coc extensions need to be installed
+" :CocInstall xxx
+" coc-eslint
+" coc-pairs
+" coc-prettier
+" coc-snippets
+" coc-css
+" coc-html
+" coc-json
+" coc-rls
+" coc-tsserver
 
 " Initialize plugin system
 call plug#end()
@@ -101,6 +112,8 @@ autocmd filetype javascript nnoremap <F4> :w <bar> exec '!node '.shellescape('%'
 autocmd filetype typescript nnoremap <F4> :w <bar> exec '!ts-node '.shellescape('%')<CR>
 autocmd filetype c nnoremap <F4> :w <bar> exec '!gcc '.shellescape('%').' -o '.shellescape('%:r').' && '.shellescape('%:r')<CR>
 autocmd filetype cpp nnoremap <F4> :w <bar> exec '!g++ '.shellescape('%').' -o '.shellescape('%:r').' && '.shellescape('%:r')<CR>
+" auto load vimrc when change
+autocmd BufWritePost .vimrc source %
 " run cargo
 " autocmd filetype rust nnoremap <F6> :w <bar> exec '!cargo run'<CR> 
 " autocmd filetype rust nnoremap <F4> :w <bar> exec '!rustc '.shellescape('%').' -o '.shellescape('%:r').' && '.shellescape('%:r')<CR>
@@ -139,12 +152,11 @@ let g:python3_host_prog = "/usr/local/bin/python3"
 
 " Use tab for trigger completion with characters ahead and navigate.
 " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
 
 function! s:check_back_space() abort
   let col = col('.') - 1
@@ -245,15 +257,16 @@ nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 " auto fix keymap
 nmap <F5> :call CocAction('format')<cr>
 
-" END FOR COC
-" Search for ctags
-nnoremap <leader>. :CtrlPTag<cr>
-
 " coc-color-highlight
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " coc-yank
 nnoremap <silent> <space>y  :<C-u>CocList -A --normal yank<cr>
+
+" END FOR COC
+" Search for ctags
+nnoremap <leader>. :CtrlPTag<cr>
+
 
 
 " jsdoc syntax
