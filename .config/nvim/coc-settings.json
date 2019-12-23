@@ -1,0 +1,10 @@
+{
+  "suggest.noselect": false,
+  "coc.preferences.formatOnSaveFiletypes": [
+    "javascriptreact",
+    "typescript.tsx",
+    "graphql"
+  ],
+  "prettier.singleQuote": true,
+  "prettier.trailingComma": "all"
+}

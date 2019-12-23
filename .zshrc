@@ -112,8 +112,8 @@ alias minimal-dock='defaults write com.apple.dock static-only -bool TRUE'
 alias standard-dock='defaults write com.apple.dock static-only -bool FALSE'
 
 alias doc='cht.sh'
-alias vimconfig='vim ~/.vimrc'
 alias vim='nvim'
+
 
 
 
@@ -394,7 +394,6 @@ fi
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 export PATH="/usr/local/sbin:$PATH"
 
-export N_PREFIX="$HOME/n"; [[ :$PATH: == *":$N_PREFIX/bin:"* ]] || PATH+=":$N_PREFIX/bin"  # Added by n-install (see http://git.io/n-install-repo).
 
 # Setting ag as the default source for fzf
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'

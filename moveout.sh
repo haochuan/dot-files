@@ -34,3 +34,11 @@ echo "done"
 echo "moving startship config..."
 cp ./.config/starship.toml ~/.config/.
 echo "done"
+
+echo "moving coc config..."
+cp ./.config/nvim/coc-settings.json ~/.config/nvim/.
+echo "done"
+
+echo "moving nvim config..."
+cp ./.config/nvim/init.vim ~/.config/nvim/
+echo "done"

@@ -1,5 +1,3 @@
-
-" Install plugged if not exists
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -40,7 +38,7 @@ Plug 'morhetz/gruvbox'
 " coc-css
 " coc-html
 " coc-json
-" coc-rls
+" coc-rust-analyzer
 " coc-tsserver
 
 " Initialize plugin system
@@ -115,7 +113,7 @@ autocmd filetype cpp nnoremap <F4> :w <bar> exec '!g++ '.shellescape('%').' -o '
 " auto load vimrc when change
 autocmd BufWritePost .vimrc source %
 " run cargo
-" autocmd filetype rust nnoremap <F6> :w <bar> exec '!cargo run'<CR> 
+" autocmd filetype rust nnoremap <F6> :w <bar> exec '!cargo run'<CR>
 " autocmd filetype rust nnoremap <F4> :w <bar> exec '!rustc '.shellescape('%').' -o '.shellescape('%:r').' && '.shellescape('%:r')<CR>
 
 
@@ -129,10 +127,10 @@ let g:coc_global_extensions = [
   \ 'coc-snippets',
   \ 'coc-pairs',
   \ 'coc-tsserver',
-  \ 'coc-eslint', 
-  \ 'coc-prettier', 
-  \ 'coc-json', 
-  \ 'coc-rls', 
+  \ 'coc-eslint',
+  \ 'coc-prettier',
+  \ 'coc-json',
+  \ 'coc-rls',
   \ ]
 
 set hidden
@@ -152,10 +150,21 @@ let g:python3_host_prog = "/usr/local/bin/python3"
 
 " Use tab for trigger completion with characters ahead and navigate.
 " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
+
+" Use <c-space> to trigger completion.
+inoremap <silent><expr> <c-space> coc#refresh()
+
+" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
+" Coc only does snippet and additional edit on confirm.
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+" Or use `complete_info` if your vim support it, like:
+" inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
 
 
 function! s:check_back_space() abort
@@ -288,7 +297,7 @@ let g:jsdoc_enable_es6=1
 
 
 " nerdcommenter
-" for commenting 
+" for commenting
 " Add spaces after comment delimiters by default
 let g:NERDSpaceDelims = 1
 
@@ -335,6 +344,10 @@ nnoremap <silent> <leader>ft :Filetypes<CR>
 silent! call repeat#set("\<Plug>MyWonderfulMap", v:count)
 
 " rust.vim
-
-let g:rust_recommended_style = 0
+let g:rust_recommended_style = 1
 let g:rustfmt_autosave = 1
+
+
+" Work Only 
+
+" Personal Only
