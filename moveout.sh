@@ -40,5 +40,5 @@ cp ./.config/nvim/coc-settings.json ~/.config/nvim/.
 echo "done"
 
 echo "moving nvim config..."
-cp ./.config/nvim/init.vim ~/.config/nvim/
+cp ./.config/nvim/init.vim ~/.config/nvim/.
 echo "done"

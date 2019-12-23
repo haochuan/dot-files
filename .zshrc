@@ -112,7 +112,6 @@ alias minimal-dock='defaults write com.apple.dock static-only -bool TRUE'
 alias standard-dock='defaults write com.apple.dock static-only -bool FALSE'
 
 alias doc='cht.sh'
-alias vim='nvim'
 
 
 
