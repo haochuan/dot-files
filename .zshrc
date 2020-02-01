@@ -90,15 +90,12 @@ source $ZSH/oh-my-zsh.sh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 #
-# Example aliases
-alias project='cd ~/Projects/'
 # Git aliases
 alias addu='git add -u'
 alias addall='git add --all'
 alias commit='git commit -m'
 alias push='git push'
 alias pull='git pull'
-alias top='gtop'
 
 # For LI
 alias rb='git review'
@@ -106,13 +103,6 @@ alias rb='git review'
 
 
 alias ec2='cd ~/certs && ssh -i "aws-ec2-small-20170914.pem" ubuntu@ec2-34-222-5-128.us-west-2.compute.amazonaws.com'
-
-#show only active application on mac dock
-alias minimal-dock='defaults write com.apple.dock static-only -bool TRUE'
-alias standard-dock='defaults write com.apple.dock static-only -bool FALSE'
-
-alias doc='cht.sh'
-
 
 
 
@@ -398,10 +388,9 @@ export PATH="/usr/local/sbin:$PATH"
 export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-export VOLTA_HOME="$HOME/.volta"
-[ -s "$VOLTA_HOME/load.sh" ] && . "$VOLTA_HOME/load.sh"
 
-export PATH="$VOLTA_HOME/bin:$PATH"
 
 # for starship
 eval "$(starship init zsh)"
+export VOLTA_HOME="/Users/haocliu/.volta"
+grep --silent "$VOLTA_HOME/bin" <<< $PATH || export PATH="$VOLTA_HOME/bin:$PATH"

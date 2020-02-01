@@ -6,5 +6,11 @@
     "graphql"
   ],
   "prettier.singleQuote": true,
-  "prettier.trailingComma": "all"
+  "prettier.trailingComma": "all",
+  "coc.preferences.hoverTarget": "float",
+  "suggest.triggerAfterInsertEnter": true,
+  "suggest.acceptSuggestionOnCommitCharacter": true,
+  "suggest.autoTrigger": "always",
+  "suggest.detailField": "preview",
+  "diagnostic.refreshOnInsertMode": true
 }
