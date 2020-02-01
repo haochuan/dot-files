@@ -22,6 +22,7 @@ Plug 'heavenshell/vim-jsdoc'
 Plug 'sheerun/vim-polyglot' " for syntax highlight
 Plug 'terryma/vim-multiple-cursors'
 Plug 'junegunn/fzf.vim'
+Plug 'pangloss/vim-javascript'
 
 Plug 'tpope/vim-repeat'
 Plug 'easymotion/vim-easymotion'
