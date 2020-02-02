@@ -1,0 +1,19 @@
+{
+  "name": "dot-files",
+  "version": "1.0.0",
+  "main": "bin/index.js",
+  "repository": "https://github.com/haochuan/dot-files.git",
+  "author": "Haochuan Liu <haochuan.liu@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "node bin/index.js"
+  },
+  "bin": {
+    "sync": "./bin/index.js"
+  },
+  "dependencies": {
+    "chalk": "^3.0.0",
+    "commander": "^4.1.0",
+    "fs-extra": "^8.1.0"
+  }
+}
