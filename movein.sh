@@ -36,6 +36,7 @@ echo "done"
 
 echo "moving coc config..."
 cp ~/.config/nvim/coc-settings.json ./.config/nvim/
+cp ~/.config/coc/extensions/package.json ./.config/coc/extensions/package.json
 echo "done"
 
 echo "moving nvim config..."

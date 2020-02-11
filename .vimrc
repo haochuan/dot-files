@@ -24,6 +24,7 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'junegunn/fzf.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'mattn/emmet-vim'
+Plug 'junegunn/goyo.vim'
 
 Plug 'tpope/vim-repeat'
 Plug 'easymotion/vim-easymotion'
@@ -348,8 +349,3 @@ silent! call repeat#set("\<Plug>MyWonderfulMap", v:count)
 " rust.vim
 let g:rust_recommended_style = 1
 let g:rustfmt_autosave = 1
-
-
-" Work Only 
-
-" Personal Only
