@@ -22,6 +22,9 @@ echo "moving .zshrc..."
 cp ./.zshrc ~/.
 echo "done"
 
+echo "moving .tmux.conf..."
+cp ./.tmux.conf ~/.
+echo "done"
 
 echo "moving .eslintrc.json ..."
 cp ./.eslintrc.json ~/.
