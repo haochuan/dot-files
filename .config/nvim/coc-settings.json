@@ -12,5 +12,6 @@
   "suggest.acceptSuggestionOnCommitCharacter": true,
   "suggest.autoTrigger": "always",
   "suggest.detailField": "preview",
-  "diagnostic.refreshOnInsertMode": true
+  "diagnostic.refreshOnInsertMode": true,
+  "coc.preferences.rootPatterns":  ["Cargo.toml",".vim",".git",".hg",".projections.json"]
 }
