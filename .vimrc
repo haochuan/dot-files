@@ -18,6 +18,7 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'ryanoasis/vim-devicons'
 Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-fugitive'
 Plug 'heavenshell/vim-jsdoc'
 Plug 'sheerun/vim-polyglot' " for syntax highlight
 Plug 'terryma/vim-multiple-cursors'
