@@ -397,6 +397,3 @@ export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
 eval "$(starship init zsh)"
 export VOLTA_HOME="/Users/haocliu/.volta"
 grep --silent "$VOLTA_HOME/bin" <<< $PATH || export PATH="$VOLTA_HOME/bin:$PATH"
-
-# Vim mode command line
-bindkey -v
