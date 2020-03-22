@@ -12,7 +12,7 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'jistr/vim-nerdtree-tabs'
 Plug 'tpope/vim-surround'
-Plug 'bling/vim-airline'
+Plug 'itchyny/lightline.vim'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'frazrepo/vim-rainbow'
 Plug 'jiangmiao/auto-pairs'
@@ -352,3 +352,11 @@ silent! call repeat#set("\<Plug>MyWonderfulMap", v:count)
 " rust.vim
 let g:rust_recommended_style = 1
 let g:rustfmt_autosave = 1
+
+let g:lightline = {
+      \ 'colorscheme': 'wombat',
+      \ }
+
+
+
+
