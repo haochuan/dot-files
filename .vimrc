@@ -12,16 +12,16 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'jistr/vim-nerdtree-tabs'
 Plug 'tpope/vim-surround'
-Plug 'itchyny/lightline.vim'
+Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'frazrepo/vim-rainbow'
 Plug 'jiangmiao/auto-pairs'
 Plug 'scrooloose/nerdcommenter'
-Plug 'mcchrish/nnn.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'ryanoasis/vim-devicons'
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
+Plug 'mcchrish/nnn.vim'
 Plug 'heavenshell/vim-jsdoc'
 Plug 'sheerun/vim-polyglot' " for syntax highlight
 Plug 'terryma/vim-multiple-cursors'
@@ -34,7 +34,6 @@ Plug 'tpope/vim-repeat'
 Plug 'easymotion/vim-easymotion'
 " For rust
 Plug 'rust-lang/rust.vim'
-Plug 'morhetz/gruvbox'
 
 " Coc extensions need to be installed
 " :CocInstall xxx
@@ -59,8 +58,7 @@ filetype plugin indent on    " required
 " UI
 syntax enable
 set t_Co=256
-" colorscheme OceanicNext
-colorscheme gruvbox
+colorscheme OceanicNext
 let g:airline_theme='base16'
 
 set number
@@ -99,6 +97,8 @@ set expandtab "tag are spaces"
 
 " for rust tab is 4
 autocmd Filetype rust setlocal ts=4 sw=4 sts=0 expandtab
+
+" let g:rainbow_active = 1
 
 " Check if NERDTree is open or active
 map <C-e> <plug>NERDTreeTabsToggle<CR>
@@ -353,11 +353,3 @@ silent! call repeat#set("\<Plug>MyWonderfulMap", v:count)
 " rust.vim
 let g:rust_recommended_style = 1
 let g:rustfmt_autosave = 1
-
-let g:lightline = {
-      \ 'colorscheme': 'wombat',
-      \ }
-
-
-
-
