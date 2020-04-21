@@ -28,7 +28,11 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'junegunn/fzf.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'mattn/emmet-vim'
+" zen writing mode, :Goyo for start and :Goyo! for end
 Plug 'junegunn/goyo.vim'
+" show registers ctrl + r on INSERT / `"` on NORMAL
+Plug 'junegunn/vim-peekaboo'
+
 
 Plug 'tpope/vim-repeat'
 Plug 'easymotion/vim-easymotion'
