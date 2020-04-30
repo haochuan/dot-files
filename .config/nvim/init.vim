@@ -6,8 +6,7 @@ source $HOME/.config/nvim/general/paths.vim
 
 " Source depending on if VSCode is our client
 if exists('g:vscode')
-    " VSCode extension
-  source $HOME/.config/nvim/vscode/windows.vim
+  " VSCode extension
   source $HOME/.config/nvim/plug-config/easymotion.vim
 else
   " ordinary neovim

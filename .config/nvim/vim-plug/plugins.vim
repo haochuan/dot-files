@@ -10,6 +10,8 @@ call plug#begin('~/.vim/plugged')
 
 if exists('g:vscode')
   Plug 'easymotion/vim-easymotion'
+  Plug 'tpope/vim-surround'
+  Plug 'scrooloose/nerdcommenter'
 else
   Plug 'scrooloose/nerdtree'
   Plug 'Xuyuanp/nerdtree-git-plugin'
