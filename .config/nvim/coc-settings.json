@@ -13,5 +13,12 @@
   "suggest.autoTrigger": "always",
   "suggest.detailField": "preview",
   "diagnostic.refreshOnInsertMode": true,
-  "coc.preferences.rootPatterns":  ["Cargo.toml",".vim",".git",".hg",".projections.json"]
+  "coc.preferences.rootPatterns":  ["Cargo.toml",".vim",".git",".hg",".projections.json"],
+  "explorer.width": 30,
+  "explorer.icon.enableNerdfont": true,
+  "explorer.previewAction.onHover": false,
+  "explorer.keyMappings": {
+    "<cr>": ["expandable?", "expand", "open"],
+    "v": "open:vsplit"
+  }
 }
