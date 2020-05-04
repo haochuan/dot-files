@@ -127,35 +127,3 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " coc-yank
 nnoremap <silent> <space>y  :<C-u>CocList -A --normal yank<cr>
-
-" Explorer
-let g:coc_explorer_global_presets = {
-\   '.vim': {
-\      'root-uri': '~/.vim',
-\   },
-\   'floating': {
-\      'position': 'floating',
-\   },
-\   'floatingLeftside': {
-\      'position': 'floating',
-\      'floating-position': 'left-center',
-\      'floating-width': 50,
-\   },
-\   'floatingRightside': {
-\      'position': 'floating',
-\      'floating-position': 'left-center',
-\      'floating-width': 50,
-\   },
-\   'simplify': {
-\     'file.child.template': '[selection | clip | 1] [indent][icon | 1] [filename omitCenter 1]'
-\   }
-\ }
-nmap <space>e :CocCommand explorer<CR>
-nmap <space>f :CocCommand explorer --preset floating<CR>
-autocmd BufEnter * if (winnr("$") == 1 && &filetype == 'coc-explorer') | q | endif
-" workaround for using coc explorer by default
-augroup MyCocExplorer
-  autocmd!
-  autocmd VimEnter * sil! au! FileExplorer *
-  autocmd BufEnter * let d = expand('%') | if isdirectory(d) | bd | exe 'CocCommand explorer ' . d | endif
-augroup END
