@@ -10,8 +10,9 @@ let g:fzf_buffers_jump = 1
 nnoremap <C-p> :Files<Cr>
 nnoremap <C-g> :Rg<Cr>
 nnoremap <silent> <leader>b :Buffers<CR>
-nnoremap <silent> <leader>w :Windows<CR>
-nnoremap <silent> <leader>l :BLines<CR>
+" confict with easy mothing
+" nnoremap <silent> <leader>w :Windows<CR>
+" nnoremap <silent> <leader>l :BLines<CR>
 nnoremap <silent> <leader>t :BTags<CR>
 nnoremap <silent> <leader>T :Tags<CR>
 nnoremap <silent> <leader>h :History<CR>

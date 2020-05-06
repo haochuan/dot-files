@@ -19,6 +19,8 @@ else
   nnoremap <TAB> :bnext<CR>
   " SHIFT-TAB will go back
   nnoremap <S-TAB> :bprevious<CR>
+  " Ctrl + x to kill current buffer
+  nnoremap <C-x> :bw<CR>
 
 
   " Use control-c instead of escape

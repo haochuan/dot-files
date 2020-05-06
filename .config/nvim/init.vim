@@ -19,6 +19,7 @@ else
   source $HOME/.config/nvim/plug-config/js-doc.vim
   source $HOME/.config/nvim/plug-config/nerdcommenter.vim
   source $HOME/.config/nvim/plug-config/nerdtree.vim
+  source $HOME/.config/nvim/plug-config/easymotion.vim
   source $HOME/.config/nvim/plug-config/nnn.vim
   source $HOME/.config/nvim/plug-config/rust.vim
-endif
+endi
