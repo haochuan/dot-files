@@ -15,10 +15,10 @@ else
   inoremap kj <Esc>
 
 
-  " TAB in general mode will move to text buffer
-  nnoremap <TAB> :bnext<CR>
+  " TAB in general mode will move to next buffer
+  nnoremap <TAB> :tabnext<CR>
   " SHIFT-TAB will go back
-  nnoremap <S-TAB> :bprevious<CR>
+  nnoremap <S-TAB> :tabprevious<CR>
   " Ctrl + x to kill current buffer
   nnoremap <C-x> :bw<CR>
 
