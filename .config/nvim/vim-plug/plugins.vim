@@ -31,6 +31,7 @@ else
   Plug 'heavenshell/vim-jsdoc'
   Plug 'sheerun/vim-polyglot' " for syntax highlight
   Plug 'terryma/vim-multiple-cursors'
+  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
   Plug 'junegunn/fzf.vim'
   Plug 'pangloss/vim-javascript'
   Plug 'mattn/emmet-vim'
