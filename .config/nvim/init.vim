@@ -22,4 +22,9 @@ else
   source $HOME/.config/nvim/plug-config/easymotion.vim
   source $HOME/.config/nvim/plug-config/nnn.vim
   source $HOME/.config/nvim/plug-config/rust.vim
+  " for neovim
+  " https://github.com/volta-cli/volta/issues/866
+  if executable('volta')
+    let g:node_host_prog = trim(system("volta which neovim-node-host"))
+  endif
 endi
