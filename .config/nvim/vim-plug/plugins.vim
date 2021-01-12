@@ -31,7 +31,6 @@ else
   Plug 'heavenshell/vim-jsdoc'
   Plug 'sheerun/vim-polyglot' " for syntax highlight
   Plug 'terryma/vim-multiple-cursors'
-  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
   Plug 'junegunn/fzf.vim'
   Plug 'pangloss/vim-javascript'
   Plug 'mattn/emmet-vim'
@@ -42,6 +41,7 @@ else
   Plug 'tpope/vim-repeat'
   Plug 'easymotion/vim-easymotion'
   Plug 'rust-lang/rust.vim'
+  Plug 'ghifarit53/tokyonight-vim'
 endif
 
 call plug#end()
