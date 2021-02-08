@@ -41,6 +41,7 @@ else
   Plug 'tpope/vim-repeat'
   Plug 'easymotion/vim-easymotion'
   Plug 'rust-lang/rust.vim'
+  Plug 'ghifarit53/tokyonight-vim'
 endif
 
 call plug#end()
