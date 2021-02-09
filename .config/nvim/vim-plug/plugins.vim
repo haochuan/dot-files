@@ -27,7 +27,6 @@ else
   Plug 'ryanoasis/vim-devicons'
   Plug 'airblade/vim-gitgutter'
   Plug 'tpope/vim-fugitive'
-  Plug 'mcchrish/nnn.vim'
   Plug 'heavenshell/vim-jsdoc'
   Plug 'sheerun/vim-polyglot' " for syntax highlight
   Plug 'terryma/vim-multiple-cursors'
