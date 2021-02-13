@@ -12,19 +12,24 @@ else
   " ordinary neovim
   source $HOME/.config/nvim/themes/main.vim
   source $HOME/.config/nvim/themes/airline.vim
-  source $HOME/.config/nvim/plug-config/coc.vim
   source $HOME/.config/nvim/plug-config/emmet.vim
-  source $HOME/.config/nvim/plug-config/fzf.vim
+  source $HOME/.config/nvim/plug-config/telescope.vim
   source $HOME/.config/nvim/plug-config/gitgutter.vim
   source $HOME/.config/nvim/plug-config/js-doc.vim
   source $HOME/.config/nvim/plug-config/nerdcommenter.vim
   source $HOME/.config/nvim/plug-config/nerdtree.vim
   source $HOME/.config/nvim/plug-config/easymotion.vim
-  source $HOME/.config/nvim/plug-config/nnn.vim
+  source $HOME/.config/nvim/plug-config/coc.vim
   source $HOME/.config/nvim/plug-config/rust.vim
-  " for neovim
+  " source $HOME/.config/nvim/plug-config/deoplete.vim
+  " source $HOME/.config/nvim/plug-config/lspconfig.vim
+
+  " volta for neovim
   " https://github.com/volta-cli/volta/issues/866
   if executable('volta')
     let g:node_host_prog = trim(system("volta which neovim-node-host"))
   endif
-endi
+
+  endif
+
+

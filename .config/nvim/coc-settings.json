@@ -3,7 +3,10 @@
   "coc.preferences.formatOnSaveFiletypes": [
     "javascriptreact",
     "typescript.tsx",
-    "graphql"
+    "graphql",
+    "css",
+    "markdown",
+    "javascript"
   ],
   "prettier.singleQuote": true,
   "prettier.trailingComma": "all",
@@ -13,5 +16,6 @@
   "suggest.autoTrigger": "always",
   "suggest.detailField": "preview",
   "diagnostic.refreshOnInsertMode": true,
-  "coc.preferences.rootPatterns":  ["Cargo.toml",".vim",".git",".hg",".projections.json"]
+  "coc.preferences.rootPatterns":  ["Cargo.toml",".vim",".git",".hg",".projections.json"],
+  "rust-analyzer.inlayHints.refreshOnInsertMode": true
 }

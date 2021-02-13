@@ -15,7 +15,6 @@ if exists('g:vscode')
 else
   Plug 'scrooloose/nerdtree'
   Plug 'Xuyuanp/nerdtree-git-plugin'
-  Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
   Plug 'jistr/vim-nerdtree-tabs'
   Plug 'tpope/vim-surround'
   Plug 'vim-airline/vim-airline'
@@ -27,12 +26,8 @@ else
   Plug 'ryanoasis/vim-devicons'
   Plug 'airblade/vim-gitgutter'
   Plug 'tpope/vim-fugitive'
-  Plug 'mcchrish/nnn.vim'
   Plug 'heavenshell/vim-jsdoc'
-  Plug 'sheerun/vim-polyglot' " for syntax highlight
   Plug 'terryma/vim-multiple-cursors'
-  Plug 'junegunn/fzf.vim'
-  Plug 'pangloss/vim-javascript'
   Plug 'mattn/emmet-vim'
   " zen writing mode, :Goyo for start and :Goyo! for end
   Plug 'junegunn/goyo.vim'
@@ -40,8 +35,12 @@ else
   Plug 'junegunn/vim-peekaboo'
   Plug 'tpope/vim-repeat'
   Plug 'easymotion/vim-easymotion'
-  Plug 'rust-lang/rust.vim'
-  Plug 'ghifarit53/tokyonight-vim'
+  Plug 'mhartington/oceanic-next'
+  Plug 'nvim-lua/popup.nvim'
+  Plug 'nvim-lua/plenary.nvim'
+  Plug 'nvim-telescope/telescope.nvim'
+  " Plug 'neovim/nvim-lspconfig'
+  " Plug 'nvim-lua/completion-nvim'
 endif
 
 call plug#end()

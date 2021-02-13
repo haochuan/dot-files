@@ -36,7 +36,7 @@ if !exists('g:vscode')
   set formatoptions-=cro                  " Stop newline continution of comments
   set clipboard=unnamedplus               " Copy paste between vim and everything else
   set incsearch                           " search as characters are entered
-  set hlsearch                            " highlight matches
+  set nohlsearch                          " do not highlight matches
   set noswapfile                          " Disabling swap files
   "set autochdir                           " Your working directory will always be the same as your working directory
 
