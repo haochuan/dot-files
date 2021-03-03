@@ -4,6 +4,11 @@
 if [ -x "$(command -v brew)" ]; then
   brew update
   brew upgrate
+
+  brew install bat
+  brew install exa
+  brew install ripgrep
+  brew install starship
 fi
 
 # Rust related
@@ -13,10 +18,10 @@ if ! [ -x "$(command -v cargo)" ]; then
   curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 fi
 
-cargo install \
-  bat \
-  ripgrep \
-  starship
+# cargo install \
+#   bat \
+#   ripgrep \
+#   starship
 
 # install oh-my-zsh
 if ! [ -d $HOME/.config/oh-my-zsh/ ]; then
