@@ -21,7 +21,7 @@ else
   source $HOME/.config/nvim/plug-config/easymotion.vim
   source $HOME/.config/nvim/plug-config/coc.vim
   source $HOME/.config/nvim/plug-config/rust.vim
-  " source $HOME/.config/nvim/plug-config/deoplete.vim
+  source $HOME/.config/nvim/plug-config/tree-sitter.vim
   " source $HOME/.config/nvim/plug-config/lspconfig.vim
 
   " volta for neovim

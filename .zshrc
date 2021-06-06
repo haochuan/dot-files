@@ -112,7 +112,7 @@ alias lt='exa -aT --color=always --group-directories-first'
 export PATH="/usr/local/Cellar:$PATH"
 
 # For Z
-./config/z/z.sh
+. ${HOME}/.config/z/z.sh
 
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
