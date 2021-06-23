@@ -5,10 +5,7 @@ if [ -x "$(command -v brew)" ]; then
   brew update
   brew upgrate
 
-  brew install bat
-  brew install exa
-  brew install ripgrep
-  brew install starship
+  brew install bat exa ripgrep starship htop tree jq
 else
   # ripgrep
   sudo yum-config-manager --add-repo=https://copr.fedorainfracloud.org/coprs/carlwgeorge/ripgrep/repo/epel-7/carlwgeorge-ripgrep-epel-7.repo
