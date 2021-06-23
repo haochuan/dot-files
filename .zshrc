@@ -93,10 +93,13 @@ alias rb='git review'
 
 alias ec2='cd ~/certs && ssh -i "aws-ec2-small-20170914.pem" ubuntu@ec2-34-222-5-128.us-west-2.compute.amazonaws.com'
 
-alias ls='exa -al --color=always --group-directories-first'
-alias la='exa -a --color=always --group-directories-first'
-alias ll='exa -l --color=always --group-directories-first'
-alias lt='exa -aT --color=always --group-directories-first'
+if ! [ -x exa ]; then
+  alias ls='exa -al --color=always --group-directories-first'
+  alias la='exa -a --color=always --group-directories-first'
+  alias ll='exa -l --color=always --group-directories-first'
+  alias lt='exa -aT --color=always --group-directories-first'
+fi
+
 
 
 

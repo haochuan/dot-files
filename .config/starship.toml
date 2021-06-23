@@ -23,12 +23,8 @@ conflicted = "😰 "
 diverged = "😵 "
 stashed = "📦 "
 modified = "📝 "
-staged.style = "green"
-staged_count.enabled = true
-staged_count.style = "green"
 renamed = "👅 "
 deleted = "🗑  "
-cherry_pick = "🍒 PICKING"
 
 [git_branch]
 symbol = "🌵 "
