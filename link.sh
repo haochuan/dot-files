@@ -3,7 +3,7 @@
 # link config files in this repo to machines ~
 
 REPO_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
-BACKUP_DIR=~/.dotfiles_backup/$(date +%m%d%H%M%Y%S)
+BACKUP_DIR=~/.dotfiles_backup/$(date +%Y-%m-%d_%T)
 
 
 for file in $(find $REPO_DIR -maxdepth 1 -iname '.*' -not -path '*/.git')
@@ -15,4 +15,3 @@ do
   echo " $file => ~/$filename"
   ln -s "$file" ~
 done
-
