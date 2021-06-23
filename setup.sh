@@ -9,6 +9,10 @@ if [ -x "$(command -v brew)" ]; then
   brew install exa
   brew install ripgrep
   brew install starship
+else
+  # ripgrep
+  sudo yum-config-manager --add-repo=https://copr.fedorainfracloud.org/coprs/carlwgeorge/ripgrep/repo/epel-7/carlwgeorge-ripgrep-epel-7.repo
+  sudo yum install ripgrep
 fi
 
 # Rust related
@@ -38,6 +42,12 @@ git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-m
 if [ -x "$(command -v brew)" ]; then
   brew install --HEAD luajit
   brew install --HEAD neovim
+else
+  # install nvim from appiamge
+  curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
+  chmod u+x nvim.appimage
+  ./nvim.appimage --appimage-extract
+  mv squashfs-root / && ln -s /squashfs-root/AppRun /usr/bin/nvim
 fi
 
 

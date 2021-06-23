@@ -13,6 +13,7 @@ if exists('g:vscode')
   Plug 'tpope/vim-surround'
   Plug 'scrooloose/nerdcommenter'
 else
+  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
   Plug 'bluz71/vim-nightfly-guicolors'
   Plug 'scrooloose/nerdtree'
   Plug 'Xuyuanp/nerdtree-git-plugin'
