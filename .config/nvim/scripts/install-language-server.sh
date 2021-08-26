@@ -9,3 +9,4 @@ volta install bash-language-server
 volta install yaml-language-server
 volta install vscode-json-languageserver
 volta install vscode-css-languageserver-bin
+volta install pyright

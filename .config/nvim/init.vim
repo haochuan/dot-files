@@ -19,10 +19,11 @@ else
   source $HOME/.config/nvim/plug-config/nerdcommenter.vim
   source $HOME/.config/nvim/plug-config/nerdtree.vim
   source $HOME/.config/nvim/plug-config/easymotion.vim
-  source $HOME/.config/nvim/plug-config/coc.vim
   source $HOME/.config/nvim/plug-config/rust.vim
   source $HOME/.config/nvim/plug-config/tree-sitter.vim
-  " source $HOME/.config/nvim/plug-config/lspconfig.vim
+  source $HOME/.config/nvim/plug-config/lspconfig.vim
+  source $HOME/.config/nvim/plug-config/completion-nvim.vim
+  luafile $HOME/.config/nvim/plug-config/lsp-language-server.lua
 
   " volta for neovim
   " https://github.com/volta-cli/volta/issues/866

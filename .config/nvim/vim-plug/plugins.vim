@@ -13,7 +13,6 @@ if exists('g:vscode')
   Plug 'tpope/vim-surround'
   Plug 'scrooloose/nerdcommenter'
 else
-  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
   Plug 'bluz71/vim-nightfly-guicolors'
   Plug 'scrooloose/nerdtree'
   Plug 'Xuyuanp/nerdtree-git-plugin'
@@ -24,7 +23,6 @@ else
   Plug 'frazrepo/vim-rainbow'
   Plug 'jiangmiao/auto-pairs'
   Plug 'scrooloose/nerdcommenter'
-  Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'ryanoasis/vim-devicons'
   Plug 'airblade/vim-gitgutter'
   Plug 'tpope/vim-fugitive'
@@ -42,8 +40,8 @@ else
   Plug 'nvim-lua/plenary.nvim'
   Plug 'nvim-telescope/telescope.nvim'
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
-  " Plug 'neovim/nvim-lspconfig'
-  " Plug 'nvim-lua/completion-nvim'
+  Plug 'neovim/nvim-lspconfig'
+  Plug 'nvim-lua/completion-nvim'
 endif
 
 call plug#end()

@@ -1,38 +1,21 @@
-" enable languages
-lua << EOF 
-  require'lspconfig'.rust_analyzer.setup{}
-  require'lspconfig'.html.setup{}
-  require'lspconfig'.tsserver.setup{}
-  require'lspconfig'.bashls.setup{}
-  require'lspconfig'.yamlls.setup{}
-  require'lspconfig'.vimls.setup{}
-  require'lspconfig'.cssls.setup{}
-  require'lspconfig'.jsonls.setup {
-    commands = {
-      Format = {
-        function()
-          vim.lsp.buf.range_formatting({},{0,0},{vim.fn.line("$"),0})
-        end
-      }
-    }
-  }
-EOF 
+" LSP config (the mappings used in the default file don't quite work right)
+nnoremap <silent> gd <cmd>lua vim.lsp.buf.definition()<CR>
+nnoremap <silent> gD <cmd>lua vim.lsp.buf.declaration()<CR>
+nnoremap <silent> gr <cmd>lua vim.lsp.buf.references()<CR>
+nnoremap <silent> gi <cmd>lua vim.lsp.buf.implementation()<CR>
+nnoremap <silent> K <cmd>lua vim.lsp.buf.hover()<CR>
+nnoremap <silent> <C-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
+nnoremap <silent> <C-n> <cmd>lua vim.lsp.diagnostic.goto_prev()<CR>
+nnoremap <silent> <C-p> <cmd>lua vim.lsp.diagnostic.goto_next()<CR>
+nnoremap <silent> <F5> <cmd>lua vim.lsp.buf.formatting()<CR>
 
-" key mapping
-nnoremap <silent>gD    <cmd>lua vim.lsp.buf.declaration()<CR>
-nnoremap <silent>gd    <cmd>lua vim.lsp.buf.definition()<CR>
-nnoremap <silent>K     <cmd>lua vim.lsp.buf.hover()<CR>
-nnoremap <silent>gi     <cmd>lua vim.lsp.buf.implementation()<CR>
-nnoremap <silent>rn     <cmd>lua vim.lsp.buf.rename()<CR>
-nnoremap <silent>gr     <cmd>lua vim.lsp.buf.reference()<CR>
-
-" Use completion-nvim in every buffer
-autocmd BufEnter * lua require'completion'.on_attach()
-
-" format
-nnoremap <silent><F5>    <cmd>lua vim.lsp.buf.formatting()<CR>
-autocmd BufWritePre *.js lua vim.lsp.buf.formatting()
-autocmd BufWritePre *.ts lua vim.lsp.buf.formatting()
-autocmd BufWritePre *.rs lua vim.lsp.buf.formatting()
-autocmd BufWritePre *.md lua vim.lsp.buf.formatting()
-autocmd BufWritePre *.css lua vim.lsp.buf.formatting()
+" auto-format
+autocmd BufWritePre *.js lua vim.lsp.buf.formatting_sync(nil, 100)
+autocmd BufWritePre *.jsx lua vim.lsp.buf.formatting_sync(nil, 100)
+autocmd BufWritePre *.py lua vim.lsp.buf.formatting_sync(nil, 100)
+autocmd BufWritePre *.md lua vim.lsp.buf.formatting_sync(nil, 100)
+autocmd BufWritePre *.ts lua vim.lsp.buf.formatting_sync(nil, 100)
+autocmd BufWritePre *.css lua vim.lsp.buf.formatting_sync(nil, 100)
+autocmd BufWritePre *.sh lua vim.lsp.buf.formatting_sync(nil, 100)
+autocmd BufWritePre *.rust lua vim.lsp.buf.formatting_sync(nil, 100)
+autocmd BufWritePre *.html lua vim.lsp.buf.formatting_sync(nil, 100)
