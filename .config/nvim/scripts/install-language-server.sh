@@ -1,3 +1,5 @@
+#!/bin/zsh
+
 curl -L https://github.com/rust-analyzer/rust-analyzer/releases/latest/download/rust-analyzer-linux -o /usr/local/bin/rust-analyzer
 chmod +x /usr/local/bin/rust-analyzer
 

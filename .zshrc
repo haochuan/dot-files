@@ -130,5 +130,5 @@ export FZF_DEFAULT_COMMAND='rg --files --hidden --follow --glob "!.git/*"'
 
 # for starship
 eval "$(starship init zsh)"
-export VOLTA_HOME="$HOME/.volta"
+export VOLTA_HOME="~/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
