@@ -16,9 +16,9 @@ else
 
 
   " TAB in general mode will move to next buffer
-  nnoremap <TAB> :tabnext<CR>
+  " nnoremap <TAB> :tabnext<CR>
   " SHIFT-TAB will go back
-  nnoremap <S-TAB> :tabprevious<CR>
+  " nnoremap <S-TAB> :tabprevious<CR>
   " Ctrl + x to kill current buffer
   nnoremap <C-x> :bw<CR>
 
@@ -26,7 +26,7 @@ else
   " Use control-c instead of escape
   nnoremap <C-c> <Esc>
   " <TAB>: completion.
-  inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+  " inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 
 
   " Better window navigation

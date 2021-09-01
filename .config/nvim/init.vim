@@ -22,8 +22,8 @@ else
   source $HOME/.config/nvim/plug-config/rust.vim
   source $HOME/.config/nvim/plug-config/tree-sitter.vim
   source $HOME/.config/nvim/plug-config/lspconfig.vim
-  source $HOME/.config/nvim/plug-config/completion-nvim.vim
-  luafile $HOME/.config/nvim/plug-config/lsp-language-server.lua
+  source $HOME/.config/nvim/plug-config/nvim-cmp.vim
+  luafile $HOME/.config/nvim/plug-config/formatter.lua
 
   " volta for neovim
   " https://github.com/volta-cli/volta/issues/866
