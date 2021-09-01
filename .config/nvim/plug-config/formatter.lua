@@ -1,3 +1,11 @@
+function format_prettier_single_quote()
+   return {
+     exe = "prettier",
+     args = {"--stdin-filepath", vim.api.nvim_buf_get_name(0), "--single-quote"},
+     stdin = true
+   }
+end
+
 function format_prettier()
    return {
      exe = "prettier",
@@ -10,10 +18,10 @@ require("formatter").setup(
   {
     logging = true,
     filetype = {
-      typescriptreact = { format_prettier },
-      typescript = { format_prettier },
-      javascript = { format_prettier },
-      javascriptreact = { format_prettier },
+      typescriptreact = { format_prettier_single_quote },
+      typescript = { format_prettier_single_quote },
+      javascript = { format_prettier_single_quote },
+      javascriptreact = { format_prettier_single_quote },
       json = { format_prettier },
       html = { format_prettier },
       css = { format_prettier },
