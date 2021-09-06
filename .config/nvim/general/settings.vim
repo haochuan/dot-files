@@ -1,5 +1,5 @@
 " set leader key
-let g:mapleader = "\<Space>"
+let g:mapleader = ","
 
 if !exists('g:vscode')
   syntax enable                           " Enables syntax highlighing
@@ -38,8 +38,16 @@ if !exists('g:vscode')
   set incsearch                           " search as characters are entered
   set nohlsearch                          " do not highlight matches
   set noswapfile                          " Disabling swap files
+  " Set completeopt to have a better completion experience
+  " :help completeopt
+  " menuone: popup even when there's only one match
+  " noinsert: Do not insert text until a selection is made
+  " noselect: Do not select, force user to select one from the menu
+  set completeopt=menuone,noinsert,noselect
+  " Avoid showing extra messages when using completion
+  set shortmess+=c
+  set signcolumn=yes
   "set autochdir                           " Your working directory will always be the same as your working directory
-
   au! BufWritePost $MYVIMRC source %      " auto source when writing to init.vm alternatively you can run :source $MYVIMRC
 
   " for rust tab is 4

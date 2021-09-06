@@ -49,8 +49,6 @@ else
   Plug 'hrsh7th/cmp-path'
   Plug 'hrsh7th/cmp-buffer'
   Plug 'mhartington/formatter.nvim'
-  " To enable more of the features of rust-analyzer, such as inlay hints and more!
-  Plug 'simrat39/rust-tools.nvim'
 
 endif
 
