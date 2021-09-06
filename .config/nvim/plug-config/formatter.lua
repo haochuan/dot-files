@@ -14,6 +14,14 @@ function format_prettier()
    }
 end
 
+function format_rustfmt()
+   return {
+     exe = "rustfmt",
+     args = {"--emit=stdout"},
+     stdin = true
+   }
+end
+
 require("formatter").setup(
   {
     logging = true,
@@ -26,6 +34,7 @@ require("formatter").setup(
       html = { format_prettier },
       css = { format_prettier },
       markdown = { format_prettier },
+      rust = { format_rustfmt },
       lua = {
         -- luafmt
         function()

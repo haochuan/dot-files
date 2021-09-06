@@ -1,7 +1,6 @@
 #! /bin/zsh
-
-curl -L https://github.com/rust-analyzer/rust-analyzer/releases/latest/download/rust-analyzer-linux -o /usr/local/bin/rust-analyzer
-chmod +x /usr/local/bin/rust-analyzer
+#
+brew install rust-analyzer
 
 volta install vscode-html-languageserver-bin
 volta install typescript
