@@ -89,9 +89,11 @@ alias pull='git pull'
 # For LI
 alias rb='git review'
 
+# Other
+alias yl='yarn link --link-folder ~/.yarnlink'
 
 
-alias ec2='cd ~/certs && ssh -i "aws-ec2-small-20170914.pem" ubuntu@ec2-34-222-5-128.us-west-2.compute.amazonaws.com'
+
 
 if ! [ -x exa ]; then
   alias ls='exa -al --color=always --group-directories-first'

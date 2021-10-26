@@ -3,3 +3,5 @@
 node_modules/
 yarn/
 update-notifier-npm.json
+.config/configstore/update-notifier-npm.json
+.config/iterm2/AppSupport
