@@ -91,6 +91,7 @@ alias rb='git review'
 
 # Other
 alias yl='yarn link --link-folder ~/.yarnlink'
+alias yul='yarn unlink --link-folder ~/.yarnlink'
 
 
 
