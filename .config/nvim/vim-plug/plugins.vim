@@ -13,7 +13,7 @@ if exists('g:vscode')
   Plug 'tpope/vim-surround'
   Plug 'scrooloose/nerdcommenter'
 else
-  Plug 'rebelot/kanagawa.nvim'
+  Plug 'junegunn/seoul256.vim'
   Plug 'scrooloose/nerdtree'
   Plug 'Xuyuanp/nerdtree-git-plugin'
   Plug 'jistr/vim-nerdtree-tabs'
