@@ -17,11 +17,11 @@ do
 done
 
 # Copy custom nvchad config
-if ! [ -d $REPO_DIR/nvim/ ]; then
-  git clone https://github.com/NvChad/NvChad ~/.config/nvim --depth 1
-fi
+# if [ -d $REPO_DIR/nvim/ ]; then
+#   git clone https://github.com/NvChad/NvChad ~/.config/nvim --depth 1; nvim
+# fi
 
 
 if ! [ -d $REPO_DIR/nvim/lua/custom/ ]; then
-  cp -R $REPO_DIR/.config/nvchad $HOME/.config/nvim/lua/custom/
+  cp -R $REPO_DIR/.config/nvchad/ $HOME/.config/nvim/lua/custom/
 fi
