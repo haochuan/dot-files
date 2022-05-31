@@ -4,3 +4,4 @@ node_modules/
 yarn/
 configstore/update-notifier-npm.json
 .config/iterm2/AppSupport
+.config/nvim
