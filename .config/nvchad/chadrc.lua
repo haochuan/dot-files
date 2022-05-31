@@ -22,9 +22,9 @@ M.plugins = {
 
    user = require "custom.plugins",
 
-   remove = {
-      "folke/which-key.nvim",
-   },
+   -- remove = {
+   --    "folke/which-key.nvim",
+   -- },
 }
 
 M.ui = {

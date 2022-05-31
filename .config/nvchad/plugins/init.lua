@@ -15,14 +15,21 @@ return {
    ["jose-elias-alvarez/null-ls.nvim"] = {
       after = "nvim-lspconfig",
       config = function()
-         require "custom.plugins.null-ls"
+         require("custom.plugins.null-ls").setup()
       end,
    },
+
+   -- ["mhartington/formatter.nvim"] = {
+   --    after = "nvim-lspconfig",
+   --    config = function()
+   --       require "custom.plugins.formatter"
+   --    end,
+   -- },
 
    ["simrat39/rust-tools.nvim"] = {
       after = "nvim-lspconfig",
       config = function()
-          require('rust-tools').setup({})
+         require('rust-tools').setup({})
       end,
    },
 
