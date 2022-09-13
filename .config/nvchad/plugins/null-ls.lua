@@ -4,6 +4,8 @@ local b = null_ls.builtins
 
 local sources = {
 
+   -- Formatter
+
    -- webdev stuff
    -- b.formatting.deno_fmt,
    b.formatting.prettierd,
@@ -20,13 +22,20 @@ local sources = {
 
    -- Rust
    b.formatting.rustfmt.with { extra_args = { "--edition=2021" } },
+
+   -- Linting
+   b.diagnostics.eslint_d,
+
+
+   -- Actions
+   b.code_actions.eslint_d,
 }
 
 local M = {}
 
 M.setup = function()
    null_ls.setup {
-      debug = true,
+      debug = false,
       sources = sources,
 
       -- format on save
